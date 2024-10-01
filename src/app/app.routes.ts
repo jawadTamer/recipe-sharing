@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './3.home/home.component';
 import { RecipeDetailsComponent } from './7.recipe-details/recipe-details.component';
 import { RecipesComponent } from './6.recipes/recipes.component';
-import { LoginComponent } from './5.login/login.component';
 import { SignupComponent } from './4.signup/signup.component';
 import { SharingComponent } from './8.sharing/sharing.component';
 import { AboutComponent } from './9.about/about.component';
@@ -11,11 +10,6 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-  }
-  ,
-  {
-    path: 'login',
-    component: LoginComponent,
   }
   ,
   {
