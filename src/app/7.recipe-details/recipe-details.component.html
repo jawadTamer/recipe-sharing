@@ -1,1 +1,31 @@
-<p>recipe-details works!</p>
+<section class="single-product">
+    <div class="section-center single-product-center">
+      <article class="single-product-info">
+        <h1 class="single-product-title">{{ currentItem?.name }}</h1>
+        <h2 class="single-product-company text-slanted" >{{ currentItem?.category }}</h2>
+  
+        <div class="ingredients-section">
+          <h3>Ingredients</h3>
+          <ul class="ingredients-list">
+            <li *ngFor="let ingredient of currentItem?.ingredients" class=" text-black-50">
+              <strong>{{ ingredient.name }}</strong>: {{ ingredient.quantity }}
+            </li>
+          </ul>
+        </div>
+  
+        <div class="single-product-desc">
+          <h4>Instructions:</h4>
+          <ol>
+            <li *ngFor="let instruction of currentItem?.instructions"class=" text-black-50">{{ instruction }}</li>
+          </ol>
+        </div>
+  
+        <button class="addToCartBtn btn" data-id="{{ currentItem?.id }}">Add to favorite</button>
+      </article>
+  
+      <div class="single-product-image-container">
+        <img src="{{ currentItem?.image }}" class="single-product-img img" alt="{{ currentItem?.name }}" />
+      </div>
+    </div>
+  </section>
+  

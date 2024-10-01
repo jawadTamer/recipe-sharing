@@ -1,1 +1,29 @@
-<p>cards works!</p>
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Recipes</h1>
+  
+    <div class="row cardContainer">
+        @for (item of data; track item.id) {
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4"[routerLink]="['recipe-details/',item.id]" #card>
+        <div class="card">
+          <img src="{{item.image}}" class="card-img-top" alt="Recipe Image">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text text-black-50">{{ item.category }}</p>
+            <a href="#" class="btn " [routerLink]="['recipe-details/',item.id]">Show details</a>
+            <div class="star-rating mt-3 d-flex">
+              <p class=" text-black-50 " >Rate this recipe:</p>
+              <ngb-rating [(rate)]="item.rating" class="text-warning ms-4"></ngb-rating>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+    </div>
+
+  <div class="text-center mt-4">
+    <button class="btn" routerLink="recipes">View More Recipes</button>
+  </div>
+  </div>
+  
+  

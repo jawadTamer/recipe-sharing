@@ -1,0 +1,52 @@
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    filter: grayscale(50%);
+  }
+  
+  
+  
+  h1 {
+    color: var(--dark);
+  }
+  
+  a {
+    background-color: var(--last);
+    transition: transform 0.3s ease;
+    color: whitesmoke;
+  }
+  
+  a:hover {
+    transform: scale(1.05);
+    color: whitesmoke;
+    background-color: var(--secondary);
+  }
+  
+  h5 {
+    color: var(--last);
+  }
+  
+  button {
+    transition: all 0.3s ease-in-out;
+    background-color: var(--last);
+    color: whitesmoke;
+
+  }
+  
+  button:hover {
+    transform: scale(1.1);
+    color: whitesmoke;
+    background-color: var(--secondary);
+  }
+  .card-img-top {
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; 
+}
+.card{
+	cursor: pointer;
+}

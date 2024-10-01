@@ -1,0 +1,85 @@
+
+h1 {
+	text-align: center;
+	color:var(--dark);
+}
+
+.details-tab {
+	padding: 0.5rem 1rem;
+	font-size: 1.1rem;
+	color: white;
+	font-weight: 600;
+	display: block;
+	order: 0;
+	background: var(--secondary);
+	border-radius: 1.5rem;
+	margin-right: 0.35rem;
+	margin-bottom: 0.5rem;
+	cursor: pointer;
+	border: 2px solid transparent;
+}
+.details-tab:hover, .details-tab:focus {
+	border-color: #fff;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+  
+  .card:hover {
+    transform: scale(1.05);
+    filter: grayscale(50%);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  a {
+    background-color: var(--last);
+    transition: transform 0.3s ease;
+    color: whitesmoke;
+  }
+  
+  a:hover {
+    transform: scale(1.05);
+    color: whitesmoke;
+    background-color: var(--secondary);
+  }
+  
+  h5 {
+    color: var(--last);
+  }
+  
+  .card-img-top {
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; 
+}
+
+.details-tabs {
+	position: relative;
+	justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.details-content {
+	order: 1;
+	padding: 1rem;
+	width: 100%;
+}
+.details-content details summary {
+	font-weight: 600;
+}
+.details-content details {
+	margin: 1.5rem;
+}
+
+.details-item {
+	display: contents;
+}
+.details-item[open] > .details-tab {
+	background: #fff;
+	color: #333;
+}
+.card{
+	cursor: pointer;
+}

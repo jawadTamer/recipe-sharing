@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LottieComponent } from 'ngx-lottie';
+import { CardsComponent } from "./3.home/cards/cards.component";
+import { RecipesComponent } from "./6.recipes/recipes.component";
+import { RecipeDetailsComponent } from "./7.recipe-details/recipe-details.component";
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,LottieComponent],
+  imports: [RouterOutlet, LottieComponent, CardsComponent, RecipesComponent, RecipeDetailsComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  
 })
 export class AppComponent {
   title = 'recipe-sharing';
