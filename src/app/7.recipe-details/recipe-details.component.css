@@ -19,19 +19,22 @@ button:hover {
   background-color: var(--secondary);
 }
 .single-product-center {
+margin-top: 100px;
+}
+.single-product-center {
     display: flex;
-    flex-wrap: wrap; /* Allows elements to wrap on smaller screens */
-    gap: 20px; /* Add space between image and text */
+    flex-wrap: wrap; 
+    gap: 20px; 
     justify-content: center;
   }
   
   .single-product-info {
-    flex: 1 1 300px; /* Allows growth and shrinkage with a min width of 300px */
+    flex: 1 1 300px; 
     padding: 20px;
   }
   
   .single-product-image-container {
-    flex: 1 1 300px; /* Image container adapts to screen sizes */
+    flex: 1 1 300px; 
     display: flex;
     justify-content: center;
     align-items: center;
