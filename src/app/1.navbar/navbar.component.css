@@ -16,9 +16,10 @@
   .title h1 {
     font-size: 2rem;
     margin-left: 10px; 
-    color: var(--dark);
-
-  }
+background: linear-gradient(19deg, var(--primary) 0%,var(--dark) 100%);
+-webkit-background-clip: text;  
+-webkit-text-fill-color: transparent;
+}
   
   .logo {
     width: 10%;
@@ -35,6 +36,11 @@
     margin: 0 10px;
     cursor: pointer;
     color: var(--last);
+  
+}
+  .navbarlink ul li:hover {
+  
+    color: var(--dark);
   
 }
 

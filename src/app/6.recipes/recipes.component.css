@@ -1,7 +1,10 @@
 
 h1 {
 	text-align: center;
-	color:var(--dark);
+	background: linear-gradient(19deg, var(--primary) 0%,var(--dark) 100%);
+-webkit-background-clip: text;  
+-webkit-text-fill-color: transparent;
+	margin-top: 100px;
 }
 
 .details-tab {
