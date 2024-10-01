@@ -1,3 +1,83 @@
-<div>
-    <ng-lottie [options]="options"></ng-lottie>
-  </div>
+<header class="header">
+    <nav>
+       <div class="nav">
+        <div class="logo">
+            <img src="" alt="logo">
+        </div>
+        <ul class="nav-links">
+          <li><a routerLink="/home">Home</a></li>
+          <li><a routerLink="/recipes">Recipes</a></li>
+          <li><a routerLink="/about">About</a></li>
+          <li><a href="#footer">Contact</a></li>
+          <li><a routerLink="/signup">Sign Up</a></li>
+        </ul>
+       </div>
+      </nav>
+</header>
+
+<router-outlet/>
+
+<footer id="footer">
+    <div class="footer-column f1 ">
+        <h4>Contact Our Team</h4>
+        <p  class="pleft">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+        <br>
+        <div class="footer-column1">
+          <a href="#"><i class="fa-solid fa-location-dot"></i></a>
+          <p> PO Box 16122 Collins Street West</p>
+         </div>
+         <div class="footer-column1">
+          <a href="#"><i class="fa-solid fa-phone"></i></a>
+          <p>111-222-3333</p>
+         </div>
+         <div class="footer-column1">
+          <a href="#"><i class="fa-solid fa-envelope"></i></a>
+          <p> support &#64; kalathemes.com</p>
+    </div>
+    </div>
+    <div class="footer-column f2 ">
+        <h4>Follow Me</h4>
+        <ul class="social-links">
+          <li>
+            <i class="fab fa-twitter"></i>
+            <a href="https://twitter.com">Twitter</a>
+        </li>
+           <li>
+            <i class="fab fa-facebook-f"></i>
+            <a href="https://facebook.com">Facebook</a>
+           </li>
+           <li>
+            <i class="fab fa-instagram"></i>
+            <a href="http://instagram.com">Instagram</a>
+           </li> 
+           <li>
+            <i class="fab fa-tiktok"></i>
+            <a href="https://tiktok.com">TikTok</a>
+           </li>
+          <li>
+            <i class="fab fa-youtube"></i>
+            <a href="https://www.youtube.com">YouTube</a>
+          </li>
+        </ul>
+    </div>
+    <div class="footer-column f3 ">
+        <h4>Useful Links</h4>
+        <ul class="social-links link1">
+            <li><a routerLink="/about" class="element">About Us</a></li>
+            <li><a routerLink="/recipes" class="element">Recipes</a></li>
+            <li><a routerLink="/signup" class="element">Sign Up</a></li>
+            <li><a routerLink="/signup" class="element">Log In</a></li>
+            <li><a href="#footer" class="element">Contact Us</a></li>
+        </ul>
+       
+    </div>
+    <div class="footer-column f4 ">
+   <div class="sub-f4">
+    <h4 style="text-align: center; margin: auto; font-size: 29px;"><span style="color: var(--secondary);">R</span>ecipes<span style="color: var(--secondary); font-size: 40px;">.</span></h4>
+    <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempusporttitor nullam quis.</p>
+   </div>
+      </div>
+</footer>
+<div class="last-div">
+Copyright &copy; 2024 <span style="font-weight: bold;">Recipes Sharing</span> All Rights Reserved
+</div>
