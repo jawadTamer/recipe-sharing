@@ -1,0 +1,46 @@
+.parent{
+    padding-top: 2.5%;
+    margin: 4% 0px;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+    height: 100dvh;
+}
+.header{
+    color: #fff;
+}
+.header::before{
+    content: "";
+    width: 58%;
+    height: 72%;
+    position: absolute;
+    z-index: -1;
+    top: -23%;
+    left: -3%;
+    border-radius: 0% 100% 100% 0% / 30% 0% 100% 70%; 
+    background: linear-gradient(270deg, rgba(0,150,199,1) 9%, rgba(3,4,94,1) 93%);
+}
+.form label{
+    color: var(--secondary);
+}
+.form input{
+   background-color: #f5f5f5;
+}
+.mybtn{
+    background-color: var(--last);
+    margin: 6%;
+    color: #fff;
+}
+.mybtn:hover{
+    background-color: var(--secondary);
+}
+@media (min-width : 280px) and (max-width : 767px){
+    .header::before{
+        height: 50%;
+        width: 75%;
+    }
+    .parent{
+        margin: 12.5% 0px 6.5% 0px;
+    }
+}
+
