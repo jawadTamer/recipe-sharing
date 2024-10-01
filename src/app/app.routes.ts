@@ -22,7 +22,16 @@ export const routes: Routes = [
     component: RecipesComponent,
   },
   {
-    path: 'recipe-details/:id',
+    path: 'home/recipes',
+    component: RecipesComponent,
+  },
+  {
+    path: 'recipes/recipe-details/:id',
+    component: RecipeDetailsComponent,
+  }
+  ,
+  {
+    path: 'home/recipe-details/:id',
     component: RecipeDetailsComponent,
   }
   ,

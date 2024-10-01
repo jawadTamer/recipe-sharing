@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
 import { LottieComponent } from 'ngx-lottie';
+import { CardsComponent } from "./cards/cards.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [LottieComponent],
+  imports: [LottieComponent, CardsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 
 export class HomeComponent {
-  options = {
-    path: 'assets/a.json', // Point this to your Lottie animation JSON
-  };
+
 }
