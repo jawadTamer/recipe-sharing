@@ -52,7 +52,7 @@ background: linear-gradient(19deg, var(--primary) 0%,var(--dark) 100%);
     cursor: pointer;
   }
   .link-active{
-    color: var(--dark);
+    
     text-decoration: underline;
   }
   

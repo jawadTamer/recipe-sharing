@@ -1,1 +1,31 @@
-<p>footer works!</p>
+<footer>
+    <div class="footer-container">
+        <div class="title col-4">
+            <div class="logo">
+                <ng-lottie [options]="logo"></ng-lottie>
+            </div>
+            <h1>Recipe Sharing</h1>
+        </div>
+        <div class="footer-content">
+            <div class="footerHUL col-4">
+                <h3 class="mb-4">Recent News</h3>
+                <ul class="footerUrl">
+                    <li class="navitem" routerLink="home" routerLinkActive="link-active">Home</li>
+                    <li class="navitem" routerLink="recipes" routerLinkActive="link-active">Recipes</li>
+                    <li class="navitem" routerLink="signup" routerLinkActive="link-active">Signup</li>
+                    <li class="navitem" routerLink="sharing" routerLinkActive="link-active">Share recipe</li>
+                    <li class="navitem" routerLink="about" routerLinkActive="link-active">About us</li>
+                </ul>
+            </div>
+            <div class="footerHUL col-4">
+                <h3 class="mb-4">Contact Us</h3>
+                <ul class="d-flex flex-column">
+                    <li class="mb-2"><i class="fa-brands fa-facebook me-2"></i>Facebook</li>
+                    <li class="mb-2"><i class="fa-brands fa-linkedin me-2"></i>LinkedIn</li>
+                    <li class="mb-2"><i class="fa-brands fa-instagram me-2"></i>Instagram</li>
+                    <li class="mb-2"><i class="fa-brands fa-github me-2"></i>GitHub</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
