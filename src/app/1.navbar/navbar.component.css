@@ -1,95 +1,115 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 15px;
-    position: relative; 
-  }
-  
-  .navbar .title {
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-  }
-  
-  .title h1 {
-    font-size: 2rem;
-    margin-left: 10px; 
-background: linear-gradient(19deg, var(--primary) 0%,var(--dark) 100%);
--webkit-background-clip: text;  
--webkit-text-fill-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  position: relative;
+  background-color: rgb(249, 249, 241);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
 }
-  
+
+.navbar .title {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.title h1 {
+  font-size: 2rem;
+  margin-left: 10px;
+  background: linear-gradient(19deg, var(--primary) 0%, var(--dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo {
+  width: 10%;
+  min-width: 50px; 
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+
+.darkmode {
+  cursor: pointer;
+  font-size: 1.8rem;  
+  display: flex;
+  color: var(--dark); 
+  border-radius: 50%;
+  transition: transform 0.2s ease, color 0.3s ease; 
+}
+
+.darkmode:hover {
+  color: var(--last); 
+  transform: scale(1.1); 
+}
+
+.fa-moon, .fa-sun {
+  margin-left: 10px;
+}
+
+.navicon {
+  display: none;
+  font-size: 1.8rem; 
+  cursor: pointer;
+  color: var(--dark);
+}
+
+.navbarlink ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px; 
+}
+
+.navbarlink ul li {
+  cursor: pointer;
+  color: var(--last);
+  transition: color 0.3s ease;
+}
+
+.navbarlink ul li:hover {
+  color: var(--dark); 
+}
+
+.link-active {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
   .logo {
-    width: 10%;
-  }
-  
-  .navbarlink ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
-  
-  .navbarlink ul li {
-    margin: 0 10px;
-    cursor: pointer;
-    color: var(--last);
-  
-}
-  .navbarlink ul li:hover {
-  
-    color: var(--dark);
-  
-}
-
-  
-  .navicon {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-  }
-  .link-active{
-    
-    text-decoration: underline;
-  }
-  
-  .active {
-    display: flex;
-  }
-  
-  
-  @media screen and (max-width: 800px) {
-    .logo {
       width: 15%;
-      height: auto; 
-    }
-    .navicon {
+      height: auto;
+  }
+  .navicon {
       display: flex;
-    }
-    .navbarlink {
-      display: none; 
-      position: absolute; 
-      top: 100%; 
+  }
+  .navbarlink {
+      display: none;
+      position: absolute;
+      top: 100%;
       left: 0;
       width: 100%;
-      background-color:  rgb(249, 249, 241); 
-      z-index: 100; 
-      transition: max-height 0.3s ease; 
-    }
-    .navbarlink.active {
-      display: flex;
-      flex-direction: column; 
-      padding: 10px; 
-    }
-    .navbarlink ul {
-      flex-direction: column;
-    }
-    .navbarlink li {
-      padding: 10px 0; 
-      text-align: center; 
-    }
+      background-color: rgb(249, 249, 241);
+      z-index: 100;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      transition: max-height 0.3s ease;
   }
-  
+  .navbarlink.active {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+  }
+  .navbarlink ul {
+      flex-direction: column;
+  }
+  .navbarlink ul li {
+      padding: 10px 0;
+      text-align: center;
+  }
+}

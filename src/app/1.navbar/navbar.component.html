@@ -1,23 +1,31 @@
 <nav class="navbar">
-    <div class="title col-6">
-      <div class="logo">
-        <ng-lottie [options]="logo"></ng-lottie>
-      </div>
-      <h1>Recipe Sharing</h1>
+  <div class="title col-6">
+    <div class="logo">
+      <ng-lottie [options]="logo"></ng-lottie>
     </div>
+    <h1>Recipe Sharing</h1>
+  </div>
   
+  <div class="nav-controls">
+    <!-- Dark mode toggle -->
+    <div class="darkmode" (click)="toggleMode()">
+      <i class="fa-solid" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+    </div> 
+
+    <!-- Mobile menu icon -->
     <div class="navicon" (click)="toggle()">
-      <i class="fa-solid fa-bars" style="color: var(--dark)"></i>
+      <i class="fa-solid fa-bars"></i>
     </div>
+  </div>
   
-    <div class="navbarlink">
-      <ul class="d-flex flex-column flex-lg-row">
-        <li class="navitem"routerLink="home"routerLinkActive="link-active">Home</li>
-        <li class="navitem"routerLink="recipes"  routerLinkActive="link-active">Recipes</li>
-        <li class="navitem"routerLink="signup"routerLinkActive="link-active">Signup</li>
-        <li class="navitem"routerLink="sharing"routerLinkActive="link-active">Share recipe</li>
-        <li class="navitem"routerLink="about"routerLinkActive="link-active">About us</li>
+  <!-- Navbar links -->
+  <div class="navbarlink">
+    <ul class="d-flex flex-column flex-lg-row">
+      <li class="navitem" routerLink="home" routerLinkActive="link-active">Home</li>
+      <li class="navitem" routerLink="recipes" routerLinkActive="link-active">Recipes</li>
+      <li class="navitem" routerLink="signup" routerLinkActive="link-active">Signup</li>
+      <li class="navitem" routerLink="sharing" routerLinkActive="link-active">Share recipe</li>
+      <li class="navitem" routerLink="about" routerLinkActive="link-active">About us</li>
     </ul>
-    </div>
-  </nav>
-  
+  </div>
+</nav>

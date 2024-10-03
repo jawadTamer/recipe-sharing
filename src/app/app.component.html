@@ -1,6 +1,7 @@
 
-<app-navbar/>
-
-<router-outlet/>
+<app-navbar (modeChange)="onModeChange($event)"></app-navbar>
+<div [ngClass]="{ 'dark-mode': isDarkMode }">
+  <router-outlet></router-outlet>
+</div>
 <app-footer/>
 
