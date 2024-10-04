@@ -30,6 +30,6 @@ html {
   --last:#094a5f;
   --dark: #0508c7;
   
-  --background:rgb(33,37,41);
+  background-color:rgb(33,37,41);
   --white:rgb(9, 4, 49);
 }

@@ -5,7 +5,7 @@ app-navbar {
     width: 100%;
     z-index: 1000; 
    
-    background-color: rgb(249, 249, 241);
+    background-color: var(--background);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
 }
   
@@ -14,8 +14,8 @@ app-navbar {
 /* .dark-mode {
     background-color: rgb(33,37,41);
     color: white;
-  } */
-  
+  }
+   */
 
   
   router-outlet {
