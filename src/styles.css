@@ -25,11 +25,11 @@ html {
   --background:rgb(249, 249, 241);
 }
 .dark-mode {
-  
   --primary: #366f79;
   --secondary: #003e5f;
   --last:#094a5f;
   --dark: #0508c7;
+  
   --background:rgb(33,37,41);
   --white:rgb(9, 4, 49);
 }
