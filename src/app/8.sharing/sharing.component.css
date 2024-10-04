@@ -1,7 +1,7 @@
 .parent{
     padding-top: 5.5%;
     margin-top: 6.9%;
-    background-color: var(--background);
+    /* background-color: var(--background); */
     position: relative;
     z-index: 1;
     height: 120vh;
@@ -27,7 +27,20 @@ form{
     color: var(--secondary);
 }
 .form input{
-   background-color: rgb(241, 241, 241);
+   background-color: var(--white);
+}
+input[type=text]{
+    padding: 8px 20px;
+    color: var(--black);
+    font-size: large;
+}
+input[type=file]{
+    color: var(--black);
+    background-color: transparent;
+}
+input[type=file]::file-selector-button{
+    background-color: var(--white);
+    color: var(--black);
 }
 .mybtn{
     background-color: var(--last);
