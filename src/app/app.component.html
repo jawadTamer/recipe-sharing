@@ -1,7 +1,7 @@
 
-<div [ngClass]="{ 'dark-mode': isDarkMode }">
 <app-navbar (modeChange)="onModeChange($event)"></app-navbar>
+<div [ngClass]="{ 'dark-mode': isDarkMode }">
   <router-outlet></router-outlet>
-  <app-footer/>
 </div>
+  <app-footer/>
 

@@ -30,6 +30,10 @@ export const routes: Routes = [
     component: RecipeDetailsComponent,
   }
   ,
+    {path: 'recipe-details/:id',
+    component: RecipeDetailsComponent,
+  }
+  ,
   {
     path: 'home/recipe-details/:id',
     component: RecipeDetailsComponent,
