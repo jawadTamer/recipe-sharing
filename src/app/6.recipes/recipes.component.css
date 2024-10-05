@@ -86,4 +86,23 @@ h1 {
 .card{
 	cursor: pointer;
 }
-
+.bg-healthy {
+	background-color: #e0f7e9; 
+  }
+  
+  .card-title {
+	font-size: 1.25rem;
+	font-weight: 600;
+  }
+  
+  .card-text {
+	font-size: 0.9rem;
+  }
+  
+  .badge.bg-success {
+	background-color: #28a745; 
+	padding: 0.4em 0.75em;
+	font-size: 0.85rem;
+	font-weight: 500;
+	border-radius: 0.25rem;
+  }

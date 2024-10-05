@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -8,7 +8,7 @@ import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [FormsModule, NgFor, NgbRatingModule,RouterModule],
+  imports: [FormsModule, NgFor, NgbRatingModule,RouterModule, NgIf, NgClass],
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.css'],
 })

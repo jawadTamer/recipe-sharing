@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http'; 
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import { Observable } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
@@ -8,7 +8,7 @@ import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-recipes',
   standalone: true,
-  imports: [HttpClientModule,RouterModule, NgFor, NgbRatingModule,RouterModule],
+  imports: [HttpClientModule,RouterModule, NgFor, NgbRatingModule,RouterModule, NgIf, NgClass],
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css'
 })
