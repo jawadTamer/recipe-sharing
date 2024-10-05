@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav  class="navbar" >
   <div class="title col-6">
     <div class="logo">
       <ng-lottie [options]="logo"></ng-lottie>
@@ -7,18 +7,16 @@
   </div>
   
   <div class="nav-controls">
-    <!-- Dark mode toggle -->
+  
     <div class="darkmode" (click)="toggleMode()">
       <i class="fa-solid" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
     </div> 
 
-    <!-- Mobile menu icon -->
     <div class="navicon" (click)="toggle()">
       <i class="fa-solid fa-bars"></i>
     </div>
   </div>
   
-  <!-- Navbar links -->
   <div class="navbarlink">
     <ul class="d-flex flex-column flex-lg-row">
       <li class="navitem" routerLink="home" routerLinkActive="link-active">Home</li>
