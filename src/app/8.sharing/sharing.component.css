@@ -4,10 +4,13 @@
     /* background-color: var(--background); */
     position: relative;
     z-index: 1;
-    height: 120vh;
+    height: fit-content;
 }
 .header{
     color: var(--white);
+}
+.shar-content{
+    animation: anmation-form 2s;
 }
 .header::before{
     content: "";
@@ -19,6 +22,7 @@
     left: -3%;
     border-radius: 0% 100% 100% 0% / 30% 0% 100% 70%; 
     background: linear-gradient(270deg, var(--last) 9%, var(--dark) 93%);
+    animation: anmation-heder 2s;
 }
 form{
     background-color: var(--white);
@@ -52,6 +56,25 @@ input[type=file]::file-selector-button{
     background-color: var(--secondary);
     transform: scale(1.03);
 }
+@keyframes anmation-heder {
+    0%{
+        transform: translatex(-60%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes anmation-form {
+    0%{
+        transform: translateY(-20%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+    
+}
+
 @media (min-width : 280px) and (max-width : 767px){
     .header::before{
         height: 44%;
