@@ -1,0 +1,42 @@
+section{
+    height:100vh ;
+}
+.mianleft{
+   background-image: linear-gradient( 45deg,var(--primary) , var(--dark) );
+   
+}
+.leftside{
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+img{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: all 0.5s;
+}
+img:hover{
+    transform: scale(1.1);
+    background: #eee;
+    box-shadow: 0 8px 8px -4px lightblue;
+}
+.titleimge{
+    font-weight: 800;
+    font-size: 4rem;
+    
+}
+.Information{
+    padding: 30px ;
+    width: 80% ;
+    border-bottom:1px solid rgba(128, 128, 128, 0.425); 
+
+}
+.rightside{
+    padding: 30px ;
+    width: 80% ;
+}
+p{
+    font-size: 2rem;
+}
