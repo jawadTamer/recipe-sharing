@@ -15,7 +15,7 @@ import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 export class RecipesComponent {
   data: any;
 
-  userName: string | ArrayBuffer | null = null; 
+  userName: string |  null = null; 
 
  
   constructor(private http: HttpClient,config: NgbRatingConfig) {   
