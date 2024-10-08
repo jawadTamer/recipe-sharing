@@ -1,12 +1,55 @@
-
-h1 {
+.title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 95px;
+	margin-right: 90px;
+	position: relative; /* Allow absolute positioning of child elements */
+	width: 100%;
+  }
+  
+  /* For "Hello, Username" aligned to the left */
+  .hello-title {
+	font-size: 2rem;
+	color: var(--secondary);
+	font-weight: 700;
+	position: absolute;
+	left: 0;  /* Aligns it to the left */
+	margin-left: 15px; /* Adds some padding from the left */
+  }
+  
+  /* For "Our Recipes" centered */
+  .recipes-title {
+	font-size: 2rem;
+	color: var(--last);
+	font-weight: 700;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
-	background: linear-gradient(19deg, var(--primary) 0%,var(--dark) 100%);
--webkit-background-clip: text;  
--webkit-text-fill-color: transparent;
-	margin-top: 100px;
-}
-
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+	.tite {
+	  flex-direction: column; /* Stack vertically on smaller screens */
+	  justify-content: flex-start; /* Align items to the start */
+	  margin-right: 0;
+	}
+  
+	.hello-title {
+	  position: static;
+	  text-align: left;
+	  margin: 0 0 10px 0; /* Top margin to separate from "Our Recipes" */
+	  font-size: 1.5rem;
+	}
+  
+	.recipes-title {
+	  margin: 0;
+	  font-size: 1.5rem;
+	  text-align: center;
+	}
+  }
+  
 .details-tab {
 	padding: 0.5rem 1rem;
 	font-size: 1.1rem;

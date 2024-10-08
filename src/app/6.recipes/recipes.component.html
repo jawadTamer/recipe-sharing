@@ -1,6 +1,9 @@
 
 
-<h1 class="mb-3">Our Recipes</h1>
+<div class="title">
+  <h1 *ngIf="userName" class="mb-3 text-capitalize hello-title">Hello, {{userName}}</h1>
+  <h1 class="mb-3 recipes-title">Our Recipes</h1>
+</div>
 <div class="details-tabs">
 	<details class="details-item" open name="test"> 
 		<summary class="details-tab">All Recipes</summary>

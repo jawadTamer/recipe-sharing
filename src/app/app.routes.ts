@@ -5,6 +5,7 @@ import { RecipesComponent } from './6.recipes/recipes.component';
 import { SignupComponent } from './4.signup/signup.component';
 import { SharingComponent } from './8.sharing/sharing.component';
 import { AboutComponent } from './9.about/about.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
@@ -20,28 +21,40 @@ export const routes: Routes = [
   {
     path: 'recipes',
     component: RecipesComponent,
+    
   },
   {
     path: 'home/recipes',
     component: RecipesComponent,
+   
   },
   {
     path: 'recipes/recipe-details/:id',
     component: RecipeDetailsComponent,
+    canActivate: [authGuard]
   }
   ,
     {path: 'recipe-details/:id',
     component: RecipeDetailsComponent,
+    canActivate: [authGuard]
   }
   ,
   {
     path: 'home/recipe-details/:id',
     component: RecipeDetailsComponent,
+    canActivate: [authGuard]
+  }
+  ,
+  {
+    path: 'home/recipes/recipe-details/:id',
+    component: RecipeDetailsComponent,
+    canActivate: [authGuard]
   }
   ,
   {
     path: 'sharing',
     component: SharingComponent,
+    canActivate: [authGuard]
   }
   ,
   {
@@ -51,6 +64,7 @@ export const routes: Routes = [
   ,
   {
     path: '',
-    component: HomeComponent,
+    redirectTo:'home',
+    pathMatch: 'full'
   },
 ];

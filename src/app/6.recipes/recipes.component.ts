@@ -15,6 +15,9 @@ import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 export class RecipesComponent {
   data: any;
 
+  userName: string | ArrayBuffer | null = null; 
+
+ 
   constructor(private http: HttpClient,config: NgbRatingConfig) {   
     config.max = 5;
     config.readonly = false;
@@ -22,6 +25,10 @@ export class RecipesComponent {
 
 
   ngOnInit(): void {
+    const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+    if (storedUser && storedUser.username) {
+      this.userName= storedUser.username; 
+    }
     this.getData().subscribe(
       (response) => {
         this.data = response;
