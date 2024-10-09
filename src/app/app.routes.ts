@@ -6,6 +6,7 @@ import { SignupComponent } from './4.signup/signup.component';
 import { SharingComponent } from './8.sharing/sharing.component';
 import { AboutComponent } from './9.about/about.component';
 import { authGuard } from './auth.guard';
+import { UserDetailsComponent } from './10.user-details/user-details.component';
 
 export const routes: Routes = [
   {
@@ -67,4 +68,9 @@ export const routes: Routes = [
     redirectTo:'home',
     pathMatch: 'full'
   },
+  {
+    path: 'user-details',
+    component:UserDetailsComponent ,
+    canActivate: [authGuard]
+  }
 ];
