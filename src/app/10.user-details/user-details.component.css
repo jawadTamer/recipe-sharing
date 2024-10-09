@@ -1,42 +1,78 @@
-section{
-    height:100vh ;
+section {
+    height: 100vh;
+    margin-top: 93px;
 }
-.mianleft{
-   background-image: linear-gradient( 45deg,var(--primary) , var(--dark) );
-   
+.mianleft {
+    background-image: linear-gradient(45deg, var(--primary), var(--dark));
 }
-.leftside{
-    height: 500px;
-    width: 100%;
+
+.leftside {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
 }
-img{
+h1{
+    color: var(--dark);
+}
+img {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     transition: all 0.5s;
 }
-img:hover{
+
+img:hover {
     transform: scale(1.1);
     background: #eee;
     box-shadow: 0 8px 8px -4px lightblue;
 }
-.titleimge{
-    font-weight: 800;
-    font-size: 4rem;
-    
-}
-.Information{
-    padding: 30px ;
-    width: 80% ;
-    border-bottom:1px solid rgba(128, 128, 128, 0.425); 
 
+.titleimge {
+    font-weight: 800;
+    font-size: 3rem;
 }
-.rightside{
-    padding: 30px ;
-    width: 80% ;
+
+.Information {
+    padding: 20px;
+    width: 100%;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.425);
 }
-p{
-    font-size: 2rem;
+
+.rightside {
+    padding: 20px;
+    width: 100%;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+
+@media (max-width: 768px) {
+    .titleimge {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+    
+    .Information {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .titleimge {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .Information {
+        font-size: 1.5rem;
+    }
 }

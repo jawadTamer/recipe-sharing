@@ -1,19 +1,18 @@
 <section class="row">
-    <div class="mianleft col-4 d-flex justify-content-center align-items-center">
-        <div class="leftside">
-            <img [src]="userimage"  class="rounded-circle" width="250" height="250">
+    <div class="mianleft col-12 col-md-4 d-flex justify-content-center align-items-center">
+        <div class="leftside text-center text-md-start">
+            <img [src]="userimage" class="rounded-circle" width="250" height="250" alt="User Image">
             <h1 class="titleimge text-capitalize">{{userName}}</h1>
         </div>
-        
     </div>
-    <div class="col-8">
+    <div class="col-12 col-md-8">
         <h1 class="Information">Information</h1>
         <div class="row rightside">
-            <div class="col-6">
+            <div class="col-12 col-sm-6">
                 <h1>Email:</h1>
                 <p class="pt-3 text-black-50">{{useremail}}</p>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-sm-6">
                 <h1>Phone:</h1>
                 <p class="pt-3 text-black-50">{{usernumber}}</p>
             </div>

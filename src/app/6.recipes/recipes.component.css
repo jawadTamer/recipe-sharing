@@ -4,21 +4,20 @@
 	align-items: center;
 	margin-top: 95px;
 	margin-right: 90px;
-	position: relative; /* Allow absolute positioning of child elements */
+	position: relative; 
 	width: 100%;
   }
   
-  /* For "Hello, Username" aligned to the left */
   .hello-title {
 	font-size: 2rem;
 	color: var(--secondary);
 	font-weight: 700;
 	position: absolute;
-	left: 0;  /* Aligns it to the left */
-	margin-left: 15px; /* Adds some padding from the left */
+	left: 0;  
+	margin-left: 15px; 
   }
   
-  /* For "Our Recipes" centered */
+ 
   .recipes-title {
 	font-size: 2rem;
 	color: var(--last);
@@ -28,18 +27,17 @@
 	text-align: center;
   }
   
-  /* Responsive Design */
   @media (max-width: 768px) {
 	.tite {
-	  flex-direction: column; /* Stack vertically on smaller screens */
-	  justify-content: flex-start; /* Align items to the start */
+	  flex-direction: column;
+	  justify-content: flex-start;
 	  margin-right: 0;
 	}
   
 	.hello-title {
 	  position: static;
 	  text-align: left;
-	  margin: 0 0 10px 0; /* Top margin to separate from "Our Recipes" */
+	  margin: 0 0 10px 0; 
 	  font-size: 1.5rem;
 	}
   

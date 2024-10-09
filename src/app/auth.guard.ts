@@ -1,18 +1,18 @@
 import { CanActivateFn, Router } from '@angular/router';
 
-// Create a function to check user authentication
+
 const isAuthenticated = (): boolean => {
   const user = JSON.parse(localStorage.getItem('user') || 'null');
-  return !!user; // Returns true if user exists, false otherwise
+  return !!user;
 };
 
-// Export the authGuard function
+
 export const authGuard: CanActivateFn = (route, state) => {
-  const router = new Router(); // Instantiate the Router
+  const router = new Router(); 
   if (!isAuthenticated()) {
-    // User is not authenticated, redirect to SignupComponent
+ 
     router.navigate(['signup']);
-    return false; // Prevent access
+    return false; 
   }
-  return true; // User is authenticated, allow access
+  return true; 
 };
