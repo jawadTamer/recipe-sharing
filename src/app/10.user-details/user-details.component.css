@@ -1,7 +1,8 @@
 section {
-    height: 100vh;
+    min-height: calc(100vh - 100px);
     margin-top: 93px;
 }
+
 .mianleft {
     background-image: linear-gradient(45deg, var(--primary), var(--dark));
 }
@@ -14,9 +15,11 @@ section {
     width: 100%;
     text-align: center;
 }
-h1{
+
+h1 {
     color: var(--dark);
 }
+
 img {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     transition: all 0.5s;
@@ -48,6 +51,13 @@ p {
     font-size: 1.5rem;
 }
 
+.delete-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    flex-direction: row;
+}
 
 @media (max-width: 768px) {
     .titleimge {
@@ -57,9 +67,14 @@ p {
     p {
         font-size: 1.2rem;
     }
-    
+
     .Information {
         font-size: 1.8rem;
+    }
+
+    .delete-btn-container {
+        justify-content: flex-start;
+        margin-left: 10px;
     }
 }
 
@@ -75,7 +90,20 @@ p {
     .Information {
         font-size: 1.5rem;
     }
+
+    .delete-btn-container {
+        justify-content: flex-start;
+        margin-left: 0;
+        flex-direction: row;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 8px 16px;
+        margin-left: 10px; 
+    }
 }
+
 button {
     transition: background-color 0.3s, box-shadow 0.3s;
 }
