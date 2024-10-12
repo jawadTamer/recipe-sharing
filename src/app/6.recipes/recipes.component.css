@@ -30,7 +30,8 @@
   @media (max-width: 768px) {
 	.tite {
 	  flex-direction: column;
-	  justify-content: flex-start;
+	margin-top: 121px;
+	justify-content: flex-start;
 	  margin-right: 0;
 	}
   

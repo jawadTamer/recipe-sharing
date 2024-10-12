@@ -1,4 +1,7 @@
-<section class="single-product">
+<div class="loading w-75 m-auto" *ngIf="isloading">
+  <ng-lottie [options]="loading"></ng-lottie>
+</div>
+<section class="single-product" *ngIf="data">
     <div class="section-center single-product-center">
       <article class="single-product-info">
         <h1 class="single-product-title">{{ currentItem?.name }}</h1>
