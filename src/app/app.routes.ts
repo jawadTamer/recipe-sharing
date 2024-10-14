@@ -6,7 +6,7 @@ import { SignupComponent } from './4.signup/signup.component';
 import { SharingComponent } from './8.sharing/sharing.component';
 import { AboutComponent } from './9.about/about.component';
 import { authGuard } from './auth.guard';
-import { UserDetailsComponent } from './10.user-details/user-details.component';
+import { UserDetailsComponent } from './user/10.user-details/user-details.component';
 
 export const routes: Routes = [
   // {
@@ -126,10 +126,10 @@ export const routes: Routes = [
       import('./9.about/about.component').then((c) => c.AboutComponent),
   },
   {
-    path: 'user-details',
+    path: 'user',
     loadComponent: () =>
-      import('./10.user-details/user-details.component').then(
-        (c) => c.UserDetailsComponent
+      import('./user/user.component').then(
+        (c) => c.UserComponent
       ),
     canActivate: [authGuard],
   },
