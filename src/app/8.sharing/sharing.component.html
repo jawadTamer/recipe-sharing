@@ -4,35 +4,99 @@
         <h1>share recipe</h1>
       </div>
         <div class="row justify-content-center shar-content">
-            <div class="col-lg-6 col-md-10 col-sm-12">
-              <form class="form shadow p-3 mb-5 rounded">
+            <div class="col-lg-7 col-md-11 col-sm-12">
+              <form class="form shadow p-5 mb-5 rounded" #shereform="ngForm" (ngSubmit)="share(shereform,name.value,category.value,image.value,rating.value)">
                 <div class="mb-3">
-                  <label for="exampleInput" class="col-form-label-lg fs-4">Recipe title</label>
-                  <input type="text" class="form-control rounded-pill" id="exampleInput" aria-describedby="emailHelp" required>
+                  <label for="name" class="col-form-label-lg fs-3">Recipe title</label>
+                  <input type="text" class="form-control rounded-pill" ngModel #name name="name" id="name" aria-describedby="emailHelp" required>
                 </div>
+
                 <div class="mb-3">
-                  <label for="exampleInput1" class="col-form-label-lg fs-4">Recipe category</label>
-                  <input type="text" class="form-control rounded-pill" id="exampleInput1" required>
+                  <label for="category" class="col-form-label-lg fs-3">Recipe category</label>
+                  <input type="text" class="form-control rounded-pill" ngModel #category name="category" id="category" required>
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInput2" class="col-form-label-lg fs-4">Ingredients</label>
-                  <input type="text" class="form-control rounded-pill" id="exampleInput2" required>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInput3" class="col-form-label-lg fs-4">Instructions</label>
-                  <input type="text" class="form-control rounded-pill" id="exampleInput3" required>
-                </div>
-                <div class="row">
-                  <label for="exampleInput4" class="col-form-label-lg fs-4">Upload img</label>
-                  <div class="col-sm-12 col-lg-6">
-                    <input type="file" class="form-control p-2 rounded-pill" id="exampleInput4">
+                
+                <div class="row align-items-center">
+                  <label for="Ingredients" class="col-form-label-lg fs-3">Ingredients</label>
+                  <div>
+                    @for (item of ingredientsArr; track $index) {
+                      <p class="text-black-50 fs-5">{{item.name}} : {{item.quantity}}</p>
+                    }
                   </div>
                   <div class="col-sm-12 col-lg-6">
-                    <input type="text" class="form-control p-2 rounded-pill" id="exampleInput4" placeholder="URL">
+                    <input type="text" class="form-control p-2 rounded-pill" ngModel #Ingredientname name="Ingredientname" id="Ingredients" placeholder="Name">
+                  </div>
+                  <div class="col-sm-12 col-lg-5">
+                    <input type="text" class="form-control p-2 rounded-pill" ngModel #quantity name="quantity" id="Ingredients" placeholder="Quantity">
+                  </div>
+                  <div class="col-sm-12 col-lg-1">
+                    <i class="fa-sharp fa-solid fa-plus addbtn" (click)="addIngredient(Ingredientname.value , quantity.value)"></i> 
                   </div>
                 </div>
-                <button type="submit" class="btn mybtn fs-5">Add recipe</button>
+                 
+                <div class="mb-3 row">
+                  <label for="Instructions" class="col-form-label-lg fs-3">Instructions</label>
+                  <div>
+                    @for (item of instructionsArr; track $index) {
+                      <p class="text-black-50 fs-5"> * {{item}}</p>
+                    }
+                  </div>
+                  <div class="col-sm-12 col-lg-11">
+                    <input type="text" class="form-control rounded-pill" ngModel #Instruction name="instructions" id="Instructions" required>
+                  </div>
+                  <div class="col-sm-12 col-lg-1">
+                    <i class="fa-sharp fa-solid fa-plus addbtn" (click)="addInstruction(Instruction.value)"></i> 
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Uploadimg" class="col-form-label-lg fs-3">Upload img</label>
+                  <input type="text" class="form-control rounded-pill" ngModel #image id="Uploadimg" name="image" placeholder="URL">
+                </div>
+
+                <div class="mb-3">
+                  <label for="Rating" class="col-form-label-lg fs-3">Rating</label>
+                  <input type="text" class="form-control rounded-pill" id="Rating" ngModel #rating name="rating" placeholder="1 To 5">
+                </div>
+                <button type="submit"  class="btn mybtn fs-5">Add recipe</button>
               </form>
+            </div>
+            <!------------------------ card ---------------- -->
+            <div class="row cardContainer">
+              @for (item of shareList; track item.id) {
+              <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
+                <div
+                  class="card"
+                  [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
+                >
+                  <img
+                    src="{{ item.image }}"
+                    [routerLink]="['recipe-details/', item.id]"
+                    class="card-img-top"
+                    alt="Recipe Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
+                      <span class="badge bg-success" *ngIf="item.ingredients.length <= 4"
+                        >Healthy Recipe</span
+                      >
+                    </div>
+                    <a href="#" class="btn" [routerLink]="['recipe-details/', item.id]"
+                      >Show details</a
+                    >
+                    <div class="star-rating mt-3 d-flex">
+                      <p class="text-black-50">Rate this recipe:</p>
+                      <ngb-rating
+                        [(rate)]="item.rating"
+                        class="text-warning ms-4"
+                      ></ngb-rating>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              }
             </div>
         </div>
     </div>

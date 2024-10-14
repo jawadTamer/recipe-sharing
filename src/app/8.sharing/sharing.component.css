@@ -6,7 +6,7 @@
     z-index: 1;
     height: fit-content;
 }
-.header{
+.header h1{
     color: var(--white);
 }
 .shar-content{
@@ -15,7 +15,7 @@
 .header::before{
     content: "";
     width: 58%;
-    height: 68%;
+    height: 50rem;
     position: absolute;
     z-index: -1;
     top: -23%;
@@ -52,10 +52,97 @@ input[type=file]::file-selector-button{
     color: var(--white);
     transition: 0.5s all;
 }
+.addbtn{
+    font-size: 40px;
+    padding: 0px;
+    background-color: transparent;
+    color: var(--secondary);
+    cursor: pointer;
+    transition: 0.5s all;
+}
+.addbtn:hover{
+    transform: rotate(90deg);
+    color: var(--dark);
+}
 .mybtn:hover{
     background-color: var(--secondary);
     transform: scale(1.03);
 }
+
+/* ---------------------card_style------------ ----*/
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    filter: grayscale(50%);
+  }
+  /* h1 {
+    background: linear-gradient(19deg, var(--primary) 0%,var(--dark) 100%);
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;
+    margin-top: 100px;
+  } */
+  
+  a {
+    background-color: var(--last);
+    transition: transform 0.3s ease;
+    color: whitesmoke;
+  }
+  
+  a:hover {
+    transform: scale(1.05);
+    color: whitesmoke;
+    background-color: var(--secondary);
+  }
+  
+  h5 {
+    color: var(--last);
+  }
+  
+  button {
+    transition: all 0.3s ease-in-out;
+    background-color: var(--last);
+    color: whitesmoke;
+
+  }
+  
+  button:hover {
+    transform: scale(1.1);
+    color: whitesmoke;
+    background-color: var(--secondary);
+  }
+  .card-img-top {
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; 
+}
+.card{
+	cursor: pointer;
+}
+.bg-healthy {
+  background-color: #e0f7e9; 
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: 0.9rem;
+}
+
+.badge.bg-success {
+  background-color: #28a745; 
+  padding: 0.4em 0.75em;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+}
+
 @keyframes anmation-heder {
     0%{
         transform: translatex(-60%);
@@ -72,7 +159,6 @@ input[type=file]::file-selector-button{
     100%{
         transform: translateY(0%);
     }
-    
 }
 
 @media (min-width : 280px) and (max-width : 767px){
