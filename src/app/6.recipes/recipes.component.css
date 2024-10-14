@@ -1,150 +1,156 @@
 .title {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 95px;
-	margin-right: 90px;
-	position: relative; 
-	width: 100%;
-  }
-  
-  .hello-title {
-	font-size: 2rem;
-	color: var(--secondary);
-	font-weight: 700;
-	position: absolute;
-	left: 0;  
-	margin-left: 15px; 
-  }
-  
- 
-  .recipes-title {
-	font-size: 2rem;
-	color: var(--last);
-	font-weight: 700;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-  }
-  
-  @media (max-width: 768px) {
-	.tite {
-	  flex-direction: column;
-	margin-top: 121px;
-	justify-content: flex-start;
-	  margin-right: 0;
-	}
-  
-	.hello-title {
-	  position: static;
-	  text-align: left;
-	  margin: 0 0 10px 0; 
-	  font-size: 1.5rem;
-	}
-  
-	.recipes-title {
-	  margin: 0;
-	  font-size: 1.5rem;
-	  text-align: center;
-	}
-  }
-  
-.details-tab {
-	padding: 0.5rem 1rem;
-	font-size: 1.1rem;
-	color: white;
-	font-weight: 600;
-	display: block;
-	order: 0;
-	background: var(--secondary);
-	border-radius: 1.5rem;
-	margin-right: 0.35rem;
-	margin-bottom: 0.5rem;
-	cursor: pointer;
-	border: 2px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 95px;
+    margin-right: 90px;
+    position: relative;
+    width: 100%;
 }
+
+.hello-title {
+    font-size: 2rem;
+    color: var(--secondary);
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    margin-left: 15px;
+}
+
+.recipes-title {
+    font-size: 2rem;
+    color: var(--last);
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .title {
+        flex-direction: column;
+        margin-top: 121px;
+        justify-content: flex-start;
+        margin-right: 0;
+    }
+
+    .hello-title {
+        position: static;
+        text-align: left;
+        margin: 0 0 10px 0;
+        font-size: 1.5rem;
+    }
+
+    .recipes-title {
+        margin: 0;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}
+
+/* Tabs Animation */
+.details-tab {
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 600;
+    display: block;
+    background: var(--secondary);
+    border-radius: 1.5rem;
+    margin-right: 0.35rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
 .details-tab:hover, .details-tab:focus {
-	border-color: #fff;
+    border-color: #fff;
 }
 
 .card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
-  
-  .card:hover {
+
+.card:hover {
     transform: scale(1.05);
     filter: grayscale(50%);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  a {
+}
+
+a {
     background-color: var(--last);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
     color: whitesmoke;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     transform: scale(1.05);
-    color: whitesmoke;
     background-color: var(--secondary);
-  }
-  
-  h5 {
+    color: whitesmoke;
+}
+
+h5 {
     color: var(--last);
-  }
-  
-  .card-img-top {
-    width: 100%; 
-    height: 200px; 
-    object-fit: cover; 
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .details-tabs {
-	position: relative;
-	justify-content: center;
-	display: flex;
-	flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .details-content {
-	order: 1;
-	padding: 1rem;
-	width: 100%;
+    order: 1;
+    padding: 1rem;
+    width: 100%;
 }
+
 .details-content details summary {
-	font-weight: 600;
+    font-weight: 600;
 }
+
 .details-content details {
-	margin: 1.5rem;
+    margin: 1.5rem;
 }
 
 .details-item {
-	display: contents;
+    display: contents;
 }
+
 .details-item[open] > .details-tab {
-	background: #fff;
-	color: #333;
+    background: #fff;
+    color: #333;
 }
-.card{
-	cursor: pointer;
-}
+
+
 .bg-healthy {
-	background-color: #e0f7e9; 
-  }
-  
-  .card-title {
-	font-size: 1.25rem;
-	font-weight: 600;
-  }
-  
-  .card-text {
-	font-size: 0.9rem;
-  }
-  
-  .badge.bg-success {
-	background-color: #28a745; 
-	padding: 0.4em 0.75em;
-	font-size: 0.85rem;
-	font-weight: 500;
-	border-radius: 0.25rem;
-  }
+    background-color: #e0f7e9;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 0.9rem;
+}
+
+.badge.bg-success {
+    background-color: #28a745;
+    padding: 0.4em 0.75em;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 0.25rem;
+}
+
+

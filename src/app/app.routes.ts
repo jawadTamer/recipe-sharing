@@ -9,68 +9,133 @@ import { authGuard } from './auth.guard';
 import { UserDetailsComponent } from './10.user-details/user-details.component';
 
 export const routes: Routes = [
+  // {
+  //   path: 'home',
+  //   loadComponent: () => import('./3.home/home.component').then(c => c.HomeComponent),
+  // },
+  // {
+  //   path: 'signup',
+  //   loadComponent: () => import('./4.signup/signup.component').then(c => c.SignupComponent),
+  // },
+  // {
+  //   path: 'recipes',
+  //   loadComponent: () => import('./6.recipes/recipes.component').then(c => c.RecipesComponent),
+  // },
+  // {
+  //   path: 'home/recipes',
+  //   loadComponent: () => import('./6.recipes/recipes.component').then(c => c.RecipesComponent),
+  // },
+  // {
+  //   path: 'recipes/recipe-details/:id',
+  //   loadComponent: () => import('./7.recipe-details/recipe-details.component').then(c => c.RecipeDetailsComponent),
+  //   canActivate: [authGuard],
+  // },
+  // {
+  //   path: 'recipe-details/:id',
+  //   loadComponent: () => import('./7.recipe-details/recipe-details.component').then(c => c.RecipeDetailsComponent),
+  //   canActivate: [authGuard],
+  // },
+  // {
+  //   path: 'home/recipe-details/:id',
+  //   loadComponent: () => import('./7.recipe-details/recipe-details.component').then(c => c.RecipeDetailsComponent),
+  //   canActivate: [authGuard],
+  // },
+  // {
+  //   path: 'home/recipes/recipe-details/:id',
+  //   loadComponent: () => import('./7.recipe-details/recipe-details.component').then(c => c.RecipeDetailsComponent),
+  //   canActivate: [authGuard],
+  // },
+  // {
+  //   path: 'sharing',
+  //   loadComponent: () => import('./8.sharing/sharing.component').then(c => c.SharingComponent),
+  //   canActivate: [authGuard],
+  // },
+  // {
+  //   path: 'about',
+  //   loadComponent: () => import('./9.about/about.component').then(c => c.AboutComponent),
+  // },
+  // {
+  //   path: 'user-details',
+  //   loadComponent: () => import('./10.user-details/user-details.component').then(c => c.UserDetailsComponent),
+  //   canActivate: [authGuard],
+  // },
+  // {
+  //   path: '',
+  //   redirectTo: 'home',
+  //   pathMatch: 'full',
+  // },
   {
     path: 'home',
-    component: HomeComponent,
-  }
-  ,
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./3.home/home.component').then((c) => c.HomeComponent),
+      },
+      {
+        path: 'recipes',
+        loadComponent: () =>
+          import('./6.recipes/recipes.component').then(
+            (c) => c.RecipesComponent
+          ),
+      },
+      {
+        path: 'recipe-details/:id',
+        loadComponent: () =>
+          import('./7.recipe-details/recipe-details.component').then(
+            (c) => c.RecipeDetailsComponent
+          ),
+        canActivate: [authGuard],
+      },
+    ],
+  },
   {
     path: 'signup',
-    component: SignupComponent,
-  }
-  ,
+    loadComponent: () =>
+      import('./4.signup/signup.component').then((c) => c.SignupComponent),
+  },
   {
     path: 'recipes',
-    component: RecipesComponent,
-    
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./6.recipes/recipes.component').then(
+            (c) => c.RecipesComponent
+          ),
+      },
+      {
+        path: 'recipe-details/:id',
+        loadComponent: () =>
+          import('./7.recipe-details/recipe-details.component').then(
+            (c) => c.RecipeDetailsComponent
+          ),
+        canActivate: [authGuard],
+      },
+    ],
   },
-  {
-    path: 'home/recipes',
-    component: RecipesComponent,
-   
-  },
-  {
-    path: 'recipes/recipe-details/:id',
-    component: RecipeDetailsComponent,
-    canActivate: [authGuard]
-  }
-  ,
-    {path: 'recipe-details/:id',
-    component: RecipeDetailsComponent,
-    canActivate: [authGuard]
-  }
-  ,
-  {
-    path: 'home/recipe-details/:id',
-    component: RecipeDetailsComponent,
-    canActivate: [authGuard]
-  }
-  ,
-  {
-    path: 'home/recipes/recipe-details/:id',
-    component: RecipeDetailsComponent,
-    canActivate: [authGuard]
-  }
-  ,
   {
     path: 'sharing',
-    component: SharingComponent,
-    canActivate: [authGuard]
-  }
-  ,
+    loadComponent: () =>
+      import('./8.sharing/sharing.component').then((c) => c.SharingComponent),
+    canActivate: [authGuard],
+  },
   {
     path: 'about',
-    component: AboutComponent,
-  }
-  ,
-  {
-    path: '',
-    redirectTo:'home',
-    pathMatch: 'full'
+    loadComponent: () =>
+      import('./9.about/about.component').then((c) => c.AboutComponent),
   },
   {
     path: 'user-details',
-    component:UserDetailsComponent ,
-    canActivate: [authGuard]
-  }
+    loadComponent: () =>
+      import('./10.user-details/user-details.component').then(
+        (c) => c.UserDetailsComponent
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
 ];

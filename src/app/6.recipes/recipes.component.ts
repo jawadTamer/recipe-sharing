@@ -34,9 +34,11 @@ export class RecipesComponent {
     }
     this.getData().subscribe(
       (response) => {
-        this.data = response;
-        console.log(this.data);
-        this.isloading=false;
+        setTimeout(() => {
+          this.data = response;
+          console.log(this.data);
+          this.isloading = false;
+        }, 1000);
       },
       (error) => {
         console.error('Error occurred while fetching data:', error);
