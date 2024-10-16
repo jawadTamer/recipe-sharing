@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './3.home/home.component';
 import { RecipeDetailsComponent } from './7.recipe-details/recipe-details.component';
 import { RecipesComponent } from './6.recipes/recipes.component';
@@ -7,6 +7,8 @@ import { SharingComponent } from './8.sharing/sharing.component';
 import { AboutComponent } from './9.about/about.component';
 import { authGuard } from './auth.guard';
 import { UserDetailsComponent } from './10.user-details/user-details.component';
+import { NgModule } from '@angular/core';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 export const routes: Routes = [
   // {
@@ -133,9 +135,19 @@ export const routes: Routes = [
       ),
     canActivate: [authGuard],
   },
+  { path: 'favorites',
+    loadComponent: () =>
+      import('./favorites/favorites.component').then((c) => c.FavoritesComponent),
+  },
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
   },
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
