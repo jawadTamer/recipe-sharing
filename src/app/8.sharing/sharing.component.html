@@ -56,47 +56,11 @@
 
                 <div class="mb-3">
                   <label for="Rating" class="col-form-label-lg fs-3">Rating</label>
-                  <input type="text" class="form-control rounded-pill" id="Rating" ngModel #rating name="rating" placeholder="1 To 5">
+                  <input type="text" class="form-control rounded-pill" id="Rating" ngModel #rating="ngModel" name="rating" pattern="^[0-5]$" placeholder="1 To 5">
+                  <p style="color: red;" *ngIf="rating.touched && rating.errors?.['pattern']">Rating must be between 1 to 5</p>
                 </div>
                 <button type="submit"  class="btn mybtn fs-5">Add recipe</button>
               </form>
-            </div>
-            <!------------------------ card ---------------- -->
-            <div class="row cardContainer">
-              @for (item of shareList; track item.id) {
-              <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
-                <div
-                  class="card"
-                  [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
-                >
-                  <img
-                    src="{{ item.image }}"
-                    [routerLink]="['recipe-details/', item.id]"
-                    class="card-img-top"
-                    alt="Recipe Image"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">{{ item.name }}</h5>
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                      <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
-                      <span class="badge bg-success" *ngIf="item.ingredients.length <= 4"
-                        >Healthy Recipe</span
-                      >
-                    </div>
-                    <a href="#" class="btn" [routerLink]="['recipe-details/', item.id]"
-                      >Show details</a
-                    >
-                    <div class="star-rating mt-3 d-flex">
-                      <p class="text-black-50">Rate this recipe:</p>
-                      <ngb-rating
-                        [(rate)]="item.rating"
-                        class="text-warning ms-4"
-                      ></ngb-rating>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              }
             </div>
         </div>
     </div>
