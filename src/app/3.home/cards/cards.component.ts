@@ -13,6 +13,7 @@ import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./cards.component.css'],
 })
 export class CardsComponent {
+  fromWhere:string = "recipes";
   data: any = [
       {
         "id": 1,

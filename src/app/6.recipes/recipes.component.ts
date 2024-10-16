@@ -15,7 +15,7 @@ import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class RecipesComponent {
   data: any;
-
+  fromWhere:string = "recipes";
   userName: string |  null = null; 
   loading = {
     path: 'assets/loading.json',
