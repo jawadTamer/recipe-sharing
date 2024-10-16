@@ -5,6 +5,16 @@
     color: var(--secondary);
     font-weight: 700;
 }
+.share-now{
+  margin-top: 35px auto;
+  text-transform: capitalize;
+}
+.share-now button{
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+
+}
 .allShareig{
   order: 1;
   padding: 1rem;

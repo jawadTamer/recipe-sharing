@@ -1,6 +1,12 @@
 <!------------------------ card ---------------- -->
 <div class="container header">
   <h1>My Recipes</h1>
+  @if (shareList.length == 0) {
+    <div class="d-flex justify-content-center gap-4 share-now">
+      <h4 class=" text-black-50">Not share yet</h4>
+      <button routerLink="sharing" routerLinkActive="link-active">Share now</button>
+    </div>
+  }
 </div>
 <div class="allShareig">
   <div class="row cardContainer">
@@ -12,7 +18,7 @@
         >
           <img
             src="{{ item.image }}"
-            [routerLink]="['recipe-details/', item.id]"
+            [routerLink]="['recipe-details/', item.id ,fromWhere]"
             class="card-img-top"
             alt="Recipe Image"
           />
@@ -24,9 +30,11 @@
                 >Healthy Recipe</span
               >
             </div>
-            <a href="#" class="btn" [routerLink]="['recipe-details/', item.id ,from ]"
-              >Show details</a
-            >
+            <div class="d-flex justify-content-between">
+              <a href="#" class="btn" [routerLink]="['recipe-details/', item.id ,fromWhere]">Show details</a>
+              <button class="btn" (click)="deleteshare(item.id)" style="background-color: red;" >Delete</button>
+
+            </div>
             <div class="star-rating mt-3 d-flex">
               <p class="text-black-50">Rate this recipe:</p>
               <ngb-rating
