@@ -6,9 +6,9 @@ import { SignupComponent } from './4.signup/signup.component';
 import { SharingComponent } from './8.sharing/sharing.component';
 import { AboutComponent } from './9.about/about.component';
 import { authGuard } from './auth.guard';
-import { UserDetailsComponent } from './10.user-details/user-details.component';
 import { NgModule } from '@angular/core';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { UserComponent } from './user/user.component';
 
 export const routes: Routes = [
   // {
@@ -130,8 +130,8 @@ export const routes: Routes = [
   {
     path: 'user-details',
     loadComponent: () =>
-      import('./10.user-details/user-details.component').then(
-        (c) => c.UserDetailsComponent
+      import('./user/user.component').then(
+        (c) => c.UserComponent
       ),
     canActivate: [authGuard],
   },
