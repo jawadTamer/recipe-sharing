@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './3.home/home.component';
 import { RecipeDetailsComponent } from './7.recipe-details/recipe-details.component';
 import { RecipesComponent } from './6.recipes/recipes.component';
@@ -6,8 +6,9 @@ import { SignupComponent } from './4.signup/signup.component';
 import { SharingComponent } from './8.sharing/sharing.component';
 import { AboutComponent } from './9.about/about.component';
 import { authGuard } from './auth.guard';
-import { UserDetailsComponent } from './user/10.user-details/user-details.component';
-import { producerAccessed } from '@angular/core/primitives/signals';
+import { UserDetailsComponent } from './10.user-details/user-details.component';
+import { NgModule } from '@angular/core';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 export const routes: Routes = [
   // {
@@ -75,26 +76,13 @@ export const routes: Routes = [
       },
       {
         path: 'recipes',
-        children:[
-          {
-            path:'',
-            loadComponent: () =>
-              import('./6.recipes/recipes.component').then(
-                (c) => c.RecipesComponent
-              ),
-          },
-          {
-            path: 'recipe-details/:id/:fromWhere',
-            loadComponent: () =>
-              import('./7.recipe-details/recipe-details.component').then(
-                (c) => c.RecipeDetailsComponent
-              ),
-            canActivate: [authGuard],
-          },
-        ],
+        loadComponent: () =>
+          import('./6.recipes/recipes.component').then(
+            (c) => c.RecipesComponent
+          ),
       },
       {
-        path: 'recipe-details/:id/:fromWhere',
+        path: 'recipe-details/:id',
         loadComponent: () =>
           import('./7.recipe-details/recipe-details.component').then(
             (c) => c.RecipeDetailsComponent
@@ -119,7 +107,7 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'recipe-details/:id/:fromWhere',
+        path: 'recipe-details/:id',
         loadComponent: () =>
           import('./7.recipe-details/recipe-details.component').then(
             (c) => c.RecipeDetailsComponent
@@ -140,31 +128,16 @@ export const routes: Routes = [
       import('./9.about/about.component').then((c) => c.AboutComponent),
   },
   {
-    path: 'user',
-    children:[
-      {
-        path:'',
-        loadComponent: () =>
-          import('./user/user.component').then(
-            (c) => c.UserComponent
-          ),
-      },
-      {
-        path: 'sharing',
-        loadComponent: () =>
-          import('./8.sharing/sharing.component').then((c) => c.SharingComponent),
-        canActivate: [authGuard],
-      },
-      {
-        path: 'recipe-details/:id/:fromWhere',
-        loadComponent: () =>
-          import('./7.recipe-details/recipe-details.component').then(
-            (c) => c.RecipeDetailsComponent
-          ),
-        canActivate: [authGuard],
-      },
-    ],
+    path: 'user-details',
+    loadComponent: () =>
+      import('./10.user-details/user-details.component').then(
+        (c) => c.UserDetailsComponent
+      ),
     canActivate: [authGuard],
+  },
+  { path: 'favorites',
+    loadComponent: () =>
+      import('./favorites/favorites.component').then((c) => c.FavoritesComponent),
   },
   {
     path: '',
@@ -172,3 +145,9 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

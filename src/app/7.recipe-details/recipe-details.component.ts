@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http'; 
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { LottieComponent } from 'ngx-lottie';
-
+import { FavoritesService } from '../services/favorites.service';
+import { RecipeInterface } from '../recipe-interface';
 
 @Component({
   selector: 'app-recipe-details',
@@ -14,7 +15,7 @@ import { LottieComponent } from 'ngx-lottie';
   templateUrl: './recipe-details.component.html',
   styleUrl: './recipe-details.component.css'
 })
-export class RecipeDetailsComponent {
+export class RecipeDetailsComponent implements OnInit {
  data:any;
   itemId:any;
   currentItem: any;
@@ -25,7 +26,7 @@ export class RecipeDetailsComponent {
   };
  isloading:boolean=true;
 
-  constructor(private http: HttpClient,private active:ActivatedRoute) {}
+  constructor(private http: HttpClient,private active:ActivatedRoute, private favoritesService: FavoritesService) {}
 
   ngOnInit(): void {
 
@@ -50,6 +51,9 @@ export class RecipeDetailsComponent {
         console.error('Error occurred while fetching data:', error);
       }
     );
+
+
+    this.isFavorite = this.favoritesService.isFavorite(this.recipe.id);
   }
   else if(this.fromWhere == "sharing"){
     this.data = this.shareList;
@@ -63,5 +67,17 @@ export class RecipeDetailsComponent {
   getData(): Observable<any> {
     const apiUrl = 'https://jawadtamer.github.io/recipesApi/api.json'; 
     return this.http.get<any>(apiUrl);
+  }
+
+  @Input() recipe! : RecipeInterface;
+  isFavorite: boolean = false;
+
+  toggleFavorite() {
+    if (this.isFavorite) {
+      this.favoritesService.removeFromFavorites(this.recipe.id);
+    } else {
+      this.favoritesService.addToFavorites(this.recipe);
+    }
+    this.isFavorite = !this.isFavorite;
   }
 }
