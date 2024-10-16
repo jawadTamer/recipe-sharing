@@ -23,7 +23,9 @@
           </ol>
         </div>
   
-        <button class="addToCartBtn btn" data-id="{{ currentItem?.id }}">Add to favorite</button>
+        <button (click)="toggleFavorite()" class="addToCartBtn btn" data-id="{{ currentItem?.id }}">
+          {{ isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
+        </button>
       </article>
   
       <div class="single-product-image-container">
