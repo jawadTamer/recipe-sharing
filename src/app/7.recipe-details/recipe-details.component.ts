@@ -36,7 +36,9 @@ export class RecipeDetailsComponent implements OnInit {
 
     console.log(this.itemId);
 
-  // if (this.fromWhere == "recipes") {
+  
+  if (this.fromWhere == "recipes") {
+
     this.getData().subscribe(
       (response) => {
         this.data = response;
@@ -54,15 +56,23 @@ export class RecipeDetailsComponent implements OnInit {
      );
 
 
-    this.isFavorite = this.favoritesService.isFavorite(this.recipe.id);
-  }
-  // else if(this.fromWhere == "sharing"){
-  //   this.data = this.shareList;
-  //   this.currentItem = this.shareList.find((item: { id: number | string}) => Number(item.id) === Number(this.itemId));
-    // console.log(this.currentItem);
 
+<<<<<<< HEAD
   // }
   // }
+=======
+    // this.isFavorite = this.favoritesService.isFavorite(this.recipe.id);
+  }
+  else if(this.fromWhere == "sharing"){
+    this.data = this.shareList;
+    this.currentItem = this.shareList.find((item: { id: number | string}) => Number(item.id) === Number(this.itemId));
+    // console.log(this.currentItem);
+    
+  }
+  this.isloading=false;
+  }
+  
+>>>>>>> b826fa7992d2344827c76b9499eda58f5a0871f3
 
   getData(): Observable<any> {
     const apiUrl = 'https://jawadtamer.github.io/recipesApi/api.json';

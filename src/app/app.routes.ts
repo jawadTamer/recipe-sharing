@@ -76,13 +76,30 @@ export const routes: Routes = [
       },
       {
         path: 'recipes',
+        children: [
+          {
+            path:'',
         loadComponent: () =>
           import('./6.recipes/recipes.component').then(
             (c) => c.RecipesComponent
-          ),
+          ),           
+          },
+          {
+            path: 'recipe-details/:id/:fromWhere',
+            loadComponent: () =>
+              import('./7.recipe-details/recipe-details.component').then(
+                (c) => c.RecipeDetailsComponent
+              ),
+            canActivate: [authGuard],
+          },
+        ],
+        // loadComponent: () =>
+        //   import('./6.recipes/recipes.component').then(
+        //     (c) => c.RecipesComponent
+        //   ),
       },
       {
-        path: 'recipe-details/:id',
+        path: 'recipe-details/:id/:fromWhere',
         loadComponent: () =>
           import('./7.recipe-details/recipe-details.component').then(
             (c) => c.RecipeDetailsComponent
@@ -107,7 +124,7 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'recipe-details/:id',
+        path: 'recipe-details/:id/:fromWhere',
         loadComponent: () =>
           import('./7.recipe-details/recipe-details.component').then(
             (c) => c.RecipeDetailsComponent
@@ -142,6 +159,14 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./8.sharing/sharing.component').then((c) => c.SharingComponent),
     canActivate: [authGuard],
+      },
+      {
+        path: 'recipe-details/:id/:fromWhere',
+        loadComponent: () =>
+          import('./7.recipe-details/recipe-details.component').then(
+            (c) => c.RecipeDetailsComponent
+          ),
+        canActivate: [authGuard],
       },
     ],
    
