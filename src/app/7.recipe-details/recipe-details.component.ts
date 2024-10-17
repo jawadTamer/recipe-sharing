@@ -41,7 +41,8 @@ export class RecipeDetailsComponent implements OnInit {
       (response) => {
         this.data = response;
         console.log(this.data);
-
+        
+        this.isloading=false;
 
         this.currentItem = this.data.find((item: { id: number}) => item.id === Number(this.itemId));
         console.log(this.currentItem);
@@ -61,7 +62,6 @@ export class RecipeDetailsComponent implements OnInit {
     // console.log(this.currentItem);
 
   // }
-  // this.isloading=false;
   // }
 
   getData(): Observable<any> {
