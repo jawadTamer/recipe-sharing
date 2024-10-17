@@ -53,7 +53,7 @@ export class RecipeDetailsComponent implements OnInit {
     );
 
 
-    this.isFavorite = this.favoritesService.isFavorite(this.recipe.id);
+    // this.isFavorite = this.favoritesService.isFavorite(this.recipe.id);
   }
   else if(this.fromWhere == "sharing"){
     this.data = this.shareList;
@@ -74,9 +74,9 @@ export class RecipeDetailsComponent implements OnInit {
 
   toggleFavorite() {
     if (this.isFavorite) {
-      this.favoritesService.removeFromFavorites(this.recipe.id);
+      // this.favoritesService.removeFromFavorites(this.recipe.id);
     } else {
-      this.favoritesService.addToFavorites(this.recipe);
+      // this.favoritesService.addToFavorites(this.recipe);
     }
     this.isFavorite = !this.isFavorite;
   }

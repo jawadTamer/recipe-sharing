@@ -128,7 +128,7 @@ export const routes: Routes = [
       import('./9.about/about.component').then((c) => c.AboutComponent),
   },
   {
-    path: 'user-details',
+    path: 'user',
     loadComponent: () =>
       import('./user/user.component').then(
         (c) => c.UserComponent

@@ -10,7 +10,7 @@
       >
         <img
           src="{{ item.image }}"
-          [routerLink]="['recipe-details/', item.id , fromWhere]"
+          [routerLink]="['recipe-details/', item.id ]"
           class="card-img-top"
           alt="Recipe Image"
         />
@@ -22,7 +22,7 @@
               >Healthy Recipe</span
             >
           </div>
-          <a href="#" class="btn" [routerLink]="['recipe-details/', item.id , fromWhere]"
+          <a href="#" class="btn" [routerLink]="['recipe-details/', item.id ]"
             >Show details</a
           >
           <div class="star-rating mt-3 d-flex">
