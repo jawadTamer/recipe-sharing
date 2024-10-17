@@ -128,12 +128,23 @@ export const routes: Routes = [
       import('./9.about/about.component').then((c) => c.AboutComponent),
   },
   {
-    path: 'user',
+    path: 'user', children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./user/user.component').then(
+            (c) => c.UserComponent
+          ),
+        canActivate: [authGuard],
+      },
+      {
+        path: 'sharing',
     loadComponent: () =>
-      import('./user/user.component').then(
-        (c) => c.UserComponent
-      ),
+      import('./8.sharing/sharing.component').then((c) => c.SharingComponent),
     canActivate: [authGuard],
+      },
+    ],
+   
   },
   { path: 'favorites',
     loadComponent: () =>
