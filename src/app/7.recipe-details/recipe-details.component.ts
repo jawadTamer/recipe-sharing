@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http'; 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -33,16 +33,16 @@ export class RecipeDetailsComponent implements OnInit {
     this.itemId = this.active.snapshot.params['id'];
     this.fromWhere = this.active.snapshot.params['fromWhere'];
     console.log(this.fromWhere);
-    
+
     console.log(this.itemId);
-  
+
   // if (this.fromWhere == "recipes") {
     this.getData().subscribe(
       (response) => {
         this.data = response;
         console.log(this.data);
-  
-       
+
+
         this.currentItem = this.data.find((item: { id: number}) => item.id === Number(this.itemId));
         console.log(this.currentItem);
 
@@ -53,19 +53,19 @@ export class RecipeDetailsComponent implements OnInit {
      );
 
 
-    // this.isFavorite = this.favoritesService.isFavorite(this.recipe.id);
-  // }
+    this.isFavorite = this.favoritesService.isFavorite(this.recipe.id);
+  }
   // else if(this.fromWhere == "sharing"){
   //   this.data = this.shareList;
   //   this.currentItem = this.shareList.find((item: { id: number | string}) => Number(item.id) === Number(this.itemId));
-  //   // console.log(this.currentItem);
-    
+    // console.log(this.currentItem);
+
   // }
-  this.isloading=false;
-  }
-  
+  // this.isloading=false;
+  // }
+
   getData(): Observable<any> {
-    const apiUrl = 'https://jawadtamer.github.io/recipesApi/api.json'; 
+    const apiUrl = 'https://jawadtamer.github.io/recipesApi/api.json';
     return this.http.get<any>(apiUrl);
   }
 
