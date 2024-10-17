@@ -36,7 +36,7 @@ export class RecipeDetailsComponent implements OnInit {
     
     console.log(this.itemId);
   
-  if (this.fromWhere == "recipes") {
+  // if (this.fromWhere == "recipes") {
     this.getData().subscribe(
       (response) => {
         this.data = response;
@@ -50,17 +50,17 @@ export class RecipeDetailsComponent implements OnInit {
       (error) => {
         console.error('Error occurred while fetching data:', error);
       }
-    );
+     );
 
 
     // this.isFavorite = this.favoritesService.isFavorite(this.recipe.id);
-  }
-  else if(this.fromWhere == "sharing"){
-    this.data = this.shareList;
-    this.currentItem = this.shareList.find((item: { id: number | string}) => Number(item.id) === Number(this.itemId));
-    // console.log(this.currentItem);
+  // }
+  // else if(this.fromWhere == "sharing"){
+  //   this.data = this.shareList;
+  //   this.currentItem = this.shareList.find((item: { id: number | string}) => Number(item.id) === Number(this.itemId));
+  //   // console.log(this.currentItem);
     
-  }
+  // }
   this.isloading=false;
   }
   
@@ -74,9 +74,9 @@ export class RecipeDetailsComponent implements OnInit {
 
   toggleFavorite() {
     if (this.isFavorite) {
-      // this.favoritesService.removeFromFavorites(this.recipe.id);
+      this.favoritesService.removeFromFavorites(this.recipe.id);
     } else {
-      // this.favoritesService.addToFavorites(this.recipe);
+      this.favoritesService.addToFavorites(this.recipe);
     }
     this.isFavorite = !this.isFavorite;
   }
