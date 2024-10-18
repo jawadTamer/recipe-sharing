@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FavoritesService } from '../services/favorites.service';
 import { RecipeInterface } from '../recipe-interface';
-import { RecipesComponent } from '../6.recipes/recipes.component';
-import { NgFor } from '@angular/common';
-import { RecipeDetailsComponent } from "../7.recipe-details/recipe-details.component";
+import { RouterModule } from '@angular/router';
+import { NgFor, NgIf } from '@angular/common';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-favorites',
   standalone: true,
-  imports: [RecipesComponent, NgFor, RecipeDetailsComponent],
+  imports: [RouterModule, NgFor, NgIf, NgbRatingModule],
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.css']
 })
@@ -21,5 +21,10 @@ export class FavoritesComponent implements OnInit {
     this.favoritesService.getFavorites().subscribe(favorites => {
       this.favoriteRecipes = favorites;
     });
+  }
+
+  removeFromFavorites(recipeId: number) {
+    this.favoritesService.removeFromFavorites(recipeId);
+    this.favoriteRecipes = this.favoriteRecipes.filter(recipe => recipe.id !== recipeId);
   }
 }

@@ -46,7 +46,7 @@
       <form #signUpForm="ngForm" (ngSubmit)="register(signUpForm)" class="sign-up-form">
         <h2 class="title mt-5">Sign up</h2>
 
-      <div class="d-flex ">
+      <div class="d-flex flex-column">
         <div class="input-field">
           <i class="fas fa-user"></i>
           <input type="text" placeholder="Username" name="signupUsername" ngModel #signupUsername="ngModel" pattern="^\S+$" required />
