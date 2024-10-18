@@ -4,7 +4,7 @@
 <div *ngIf="favorites.length === 0" class="text-center">
   <h1>There are no favorites added</h1>
 </div>
-<div class="row cardContainer">
+<div class="row cardContainer w-100 p-3">
   <div *ngFor="let item of favorites" class="col-lg-4 col-md-6 col-sm-12 mb-4">
     <div class="card"
     [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
