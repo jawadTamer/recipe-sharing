@@ -1,26 +1,29 @@
-<div class="container">
-  <h1 class="text-center mt-4">Your Favorite Recipes</h1>
-
-  <div *ngIf="favoriteRecipes.length === 0" class="text-center mt-4">
-    <p>You have no favorite recipes yet. Start adding some!</p>
-  </div>
-
-  <div class="row mt-4">
-    <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let recipe of favoriteRecipes">
-      <div class="card">
-        <img src="{{ recipe.image }}" class="card-img-top" alt="{{ recipe.name }}" />
-        <div class="card-body">
-          <h5 class="card-title">{{ recipe.name }}</h5>
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <p class="card-text text-black-50 mb-0">{{ recipe.category }}</p>
-            <span class="badge bg-success" *ngIf="recipe.ingredients.length <= 4">Healthy Recipe</span>
-          </div>
-          <div class="star-rating mt-3 d-flex">
-            <p class="text-black-50">Rate this recipe:</p>
-            <ngb-rating [(rate)]="recipe.rating" class="text-warning ms-4"></ngb-rating>
-          </div>
-          <a [routerLink]="['/recipe-details', recipe.id, 'favorites']" class="btn btn-primary m-2">Show details</a>
-          <button (click)="removeFromFavorites(recipe.id)" class="btn btn-danger m-2">Remove from Favorites</button>
+<div class="title text-center text-capitalize">
+  <h1 class=" recipes-title">favorite Recipes</h1>
+</div>
+<div *ngIf="favorites.length === 0" class="text-center">
+  <h1>There are no favorites added</h1>
+</div>
+<div class="row cardContainer">
+  <div *ngFor="let item of favorites" class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="card"
+    [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
+    >
+      <img src="{{ item.image }}" class="card-img-top" alt="Recipe Image" />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.name }}</h5>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
+          <span class="badge bg-success" *ngIf="item.ingredients.length <= 4">Healthy Recipe</span>
+        </div>
+        <button (click)="removeFavorite(item)" class="btn btn-danger me-3">Remove from favorites</button>
+        <a href="#" class="btn" [routerLink]="['recipe-details/', item.id, fromWhere ]">Show details</a>
+        <div class="star-rating mt-3 d-flex">
+          <p class="text-black-50">Rate this recipe:</p>
+          <ngb-rating
+            [(rate)]="item.rating"
+            class="text-warning ms-4"
+          ></ngb-rating>
         </div>
       </div>
     </div>

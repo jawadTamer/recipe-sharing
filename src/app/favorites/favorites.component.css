@@ -1,7 +1,14 @@
-.container {
-  margin: 150px;
-}
 
+
+@media (max-width: 768px) {
+  .title {
+      flex-direction: column;
+      margin-top: 121px;
+      justify-content: flex-start;
+  }
+
+ 
+}
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;

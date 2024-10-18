@@ -15,29 +15,31 @@ import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class RecipesComponent {
   data: any;
-  fromWhere:string = "recipes";
-  userName: string |  null = null; 
+  favorites: any[] = [];
+  fromWhere: string = "recipes";
+  userName: string | null = null;
   loading = {
     path: 'assets/loading.json',
   };
- isloading:boolean=true;
-  constructor(private http: HttpClient,config: NgbRatingConfig) {   
+  isloading: boolean = true;
+
+  constructor(private http: HttpClient, config: NgbRatingConfig) {   
     config.max = 5;
     config.readonly = false;
   }
 
-
   ngOnInit(): void {
     const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
     if (storedUser && storedUser.username) {
-      this.userName= storedUser.username; 
-    }
+      this.userName = storedUser.username;
+    }
+
     this.getData().subscribe(
       (response) => {
         setTimeout(() => {
           this.data = response;
-          console.log(this.data);
           this.isloading = false;
+          this.loadFavorites(); 
         }, 1000);
       },
       (error) => {
@@ -47,8 +49,26 @@ export class RecipesComponent {
   }
 
   getData(): Observable<any> {
-    const apiUrl = 'https://jawadtamer.github.io/recipesApi/api.json'; 
+    const apiUrl = 'https://jawadtamer.github.io/recipesApi/api.json';
     return this.http.get<any>(apiUrl);
   }
 
+  addToFavorites(recipe: any) {
+    const index = this.favorites.findIndex(fav => fav.id === recipe.id);
+    if (index === -1) {
+      this.favorites.push(recipe);
+    } else {
+      this.favorites.splice(index, 1); 
+    }
+    localStorage.setItem('favorites', JSON.stringify(this.favorites));
+  }
+
+  loadFavorites() {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    this.favorites = storedFavorites;
+  }
+
+  isFavorite(recipe: any): boolean {
+    return this.favorites.some(fav => fav.id === recipe.id);
+  }
 }

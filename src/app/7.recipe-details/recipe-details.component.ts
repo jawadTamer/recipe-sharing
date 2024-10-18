@@ -12,76 +12,58 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-recipe-details',
   standalone: true,
-  imports: [HttpClientModule,FormsModule,NgFor, NgIf,LottieComponent],
+  imports: [HttpClientModule, FormsModule, NgFor, NgIf, LottieComponent],
   templateUrl: './recipe-details.component.html',
-  styleUrl: './recipe-details.component.css'
+  styleUrls: ['./recipe-details.component.css']
 })
-
 export class RecipeDetailsComponent implements OnInit {
- data:any;
-  itemId:any;
+  data: any;
+  itemId: any;
   currentItem: any;
-  shareList:any = JSON.parse(localStorage.getItem('sharelist') || '[]');
-  fromWhere:string ="";
+  shareList: any = JSON.parse(localStorage.getItem('sharelist') || '[]');
+  fromWhere: string = '';
   loading = {
     path: 'assets/loading.json',
   };
- isloading:boolean=true;
+  isloading: boolean = true;
 
-  constructor(private http: HttpClient,private active:ActivatedRoute, private favoritesService: FavoritesService, private router: Router) {}
+  constructor(private http: HttpClient, private active: ActivatedRoute, private favoritesService: FavoritesService, private router: Router) {}
 
   ngOnInit(): void {
-
     this.itemId = this.active.snapshot.params['id'];
     this.fromWhere = this.active.snapshot.params['fromWhere'];
-    console.log(this.fromWhere);
 
-    console.log(this.itemId);
-
-
-  if (this.fromWhere == "recipes") {
-
-    this.getData().subscribe(
-      (response) => {
-        this.data = response;
-        console.log(this.data);
-
-
-        this.currentItem = this.data.find((item: { id: number}) => item.id === Number(this.itemId));
-        console.log(this.currentItem);
-
-      },
-      (error) => {
-        console.error('Error occurred while fetching data:', error);
-      }
-     );
-
-
+    if (this.fromWhere === 'recipes') {
+      this.getData().subscribe(
+        (response) => {
+          this.data = response;
+          this.currentItem = this.data.find((item: { id: number }) => item.id === Number(this.itemId));
+          this.isloading = false;
+        },
+        (error) => {
+          console.error('Error occurred while fetching data:', error);
+        }
+      );
+    } else if (this.fromWhere === 'sharing') {
+      this.data = this.shareList;
+      this.currentItem = this.shareList.find((item: { id: number | string }) => Number(item.id) === Number(this.itemId));
+    }
 
     this.isFavorite = this.favoritesService.isFavorite(this.recipe.id);
   }
-  else if(this.fromWhere == "sharing"){
-    this.data = this.shareList;
-    this.currentItem = this.shareList.find((item: { id: number | string}) => Number(item.id) === Number(this.itemId));
-    // console.log(this.currentItem);
-
-  }
-  this.isloading=false;
-  }
-
 
   getData(): Observable<any> {
     const apiUrl = 'https://jawadtamer.github.io/recipesApi/api.json';
     return this.http.get<any>(apiUrl);
   }
 
-  @Input() recipe! : RecipeInterface;
+  @Input() recipe!: RecipeInterface;
   isFavorite: boolean = false;
 
   toggleFavorite() {
-    const storedUser  = JSON.parse(localStorage.getItem('user') || '{}');
-    if (!storedUser .username) { // Check if user is logged in
-      this.router.navigate(['/signup']); // Redirect to signup page
+    const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+    if (!storedUser.username) {
+      this.router.navigate(['/signup']);
       return;
     }
 

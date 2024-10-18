@@ -172,8 +172,23 @@ export const routes: Routes = [
    
   },
   { path: 'favorites',
-    loadComponent: () =>
-      import('./favorites/favorites.component').then((c) => c.FavoritesComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./favorites/favorites.component').then((c) => c.FavoritesComponent),
+        canActivate: [authGuard],
+      },
+      {
+        path: 'recipe-details/:id/:fromWhere',
+        loadComponent: () =>
+          import('./7.recipe-details/recipe-details.component').then(
+            (c) => c.RecipeDetailsComponent
+          ),
+        canActivate: [authGuard],
+      },
+    ],
+    
   },
   {
     path: '',

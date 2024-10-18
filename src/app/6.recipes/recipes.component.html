@@ -1,264 +1,357 @@
 <div class="title">
-  <h1 *ngIf="userName" class="mb-3 text-capitalize hello-title">Hello, {{userName}}</h1>
+  <h1 *ngIf="userName" class="mb-3 text-capitalize hello-title">
+    Hello, {{ userName }}
+  </h1>
   <h1 class="mb-3 recipes-title">Our Recipes</h1>
 </div>
 <div class="details-tabs">
-	<details class="details-item" open name="test">
-		<summary class="details-tab">All Recipes</summary>
-		<div class="details-content">
-			<div class="row cardContainer">
-                @for (item of data; track item.id) {
-                  <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
-                    <div
-                      class="card"
-                      [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
-                    >
-                      <img
-                        src="{{ item.image }}"
-                        [routerLink]="['recipe-details/', item.id , fromWhere]"
-                        class="card-img-top"
-                        alt="Recipe Image"
-                      />
-                      <div class="card-body">
-                        <h5 class="card-title">{{ item.name }}</h5>
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                          <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
-                          <span class="badge bg-success" *ngIf="item.ingredients.length <= 4"
-                            >Healthy Recipe</span
-                          >
-                        </div>
-                        <a href="#" class="btn" [routerLink]="['recipe-details/', item.id , fromWhere]"
-                          >Show details</a
-                        >
-                        <div class="star-rating mt-3 d-flex">
-                          <p class="text-black-50">Rate this recipe:</p>
-                          <ngb-rating
-                            [(rate)]="item.rating"
-                            class="text-warning ms-4"
-                          ></ngb-rating>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            }
+  <details class="details-item" open name="test">
+    <summary class="details-tab">All Recipes</summary>
+    <div class="details-content">
+      <div class="row cardContainer">
+        @for (item of data; track item.id) {
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
+          <div
+            class="card"
+            [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
+          >
+            <img
+              src="{{ item.image }}"
+              [routerLink]="['recipe-details/', item.id, fromWhere]"
+              class="card-img-top"
+              alt="Recipe Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
+                <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
+                <span
+                  class="badge bg-success"
+                  *ngIf="item.ingredients.length <= 4"
+                  >Healthy Recipe</span
+                >
+              </div>
+
+              <button
+                (click)="addToFavorites(item)"
+                class="btn btn-light favorite-btn"
+              >
+                <i
+                  class="fa fa-heart"
+                  [ngClass]="{ 'text-danger': isFavorite(item) }"
+                ></i>
+              </button>
+              <a
+                href="#"
+                class="btn"
+                [routerLink]="['recipe-details/', item.id, fromWhere]"
+                >Show details</a
+              >
+              <div class="star-rating mt-3 d-flex">
+                <p class="text-black-50">Rate this recipe:</p>
+                <ngb-rating
+                  [(rate)]="item.rating"
+                  class="text-warning ms-4"
+                ></ngb-rating>
+              </div>
             </div>
-		</div>
-	</details>
-	<details class="details-item" name="test">
-		<summary class="details-tab">Breakfast</summary>
-		<div class="details-content">
-            <div class="row cardContainer">
-                @for (item of data; track item.id) {
-                    @if (item.category==="Breakfast") {
-                      <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
-                        <div
-                          class="card"
-                          [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
-                        >
-                          <img
-                            src="{{ item.image }}"
-                            [routerLink]="['recipe-details/', item.id , fromWhere]"
-                            class="card-img-top"
-                            alt="Recipe Image"
-                          />
-                          <div class="card-body">
-                            <h5 class="card-title">{{ item.name }}</h5>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                              <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
-                              <span class="badge bg-success" *ngIf="item.ingredients.length <= 4"
-                                >Healthy Recipe</span
-                              >
-                            </div>
-                            <a href="#" class="btn" [routerLink]="['recipe-details/', item.id , fromWhere]"
-                              >Show details</a
-                            >
-                            <div class="star-rating mt-3 d-flex">
-                              <p class="text-black-50">Rate this recipe:</p>
-                              <ngb-rating
-                                [(rate)]="item.rating"
-                                class="text-warning ms-4"
-                              ></ngb-rating>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-            }
+          </div>
+        </div>
         }
+      </div>
+    </div>
+  </details>
+  <details class="details-item" name="test">
+    <summary class="details-tab">Breakfast</summary>
+    <div class="details-content">
+      <div class="row cardContainer">
+        @for (item of data; track item.id) { @if (item.category==="Breakfast") {
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
+          <div
+            class="card"
+            [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
+          >
+            <img
+              src="{{ item.image }}"
+              [routerLink]="['recipe-details/', item.id, fromWhere]"
+              class="card-img-top"
+              alt="Recipe Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
+                <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
+                <span
+                  class="badge bg-success"
+                  *ngIf="item.ingredients.length <= 4"
+                  >Healthy Recipe</span
+                >
+              </div>
+
+              <button
+                (click)="addToFavorites(item)"
+                class="btn btn-light favorite-btn"
+              >
+                <i
+                  class="fa fa-heart"
+                  [ngClass]="{ 'text-danger': isFavorite(item) }"
+                ></i>
+              </button>
+              <a
+                href="#"
+                class="btn"
+                [routerLink]="['recipe-details/', item.id, fromWhere]"
+                >Show details</a
+              >
+              <div class="star-rating mt-3 d-flex">
+                <p class="text-black-50">Rate this recipe:</p>
+                <ngb-rating
+                  [(rate)]="item.rating"
+                  class="text-warning ms-4"
+                ></ngb-rating>
+              </div>
             </div>
-		</div>
-	</details>
-	<details class="details-item" name="test">
-		<summary class="details-tab">lunch</summary>
-		<div class="details-content">
-            <div class="row cardContainer">
-                @for (item of data; track item.id) {
-                    @if (item.category==="Lunch") {
-                      <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
-                        <div
-                          class="card"
-                          [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
-                        >
-                          <img
-                            src="{{ item.image }}"
-                            [routerLink]="['recipe-details/', item.id , fromWhere]"
-                            class="card-img-top"
-                            alt="Recipe Image"
-                          />
-                          <div class="card-body">
-                            <h5 class="card-title">{{ item.name }}</h5>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                              <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
-                              <span class="badge bg-success" *ngIf="item.ingredients.length <= 4"
-                                >Healthy Recipe</span
-                              >
-                            </div>
-                            <a href="#" class="btn" [routerLink]="['recipe-details/', item.id , fromWhere]"
-                              >Show details</a
-                            >
-                            <div class="star-rating mt-3 d-flex">
-                              <p class="text-black-50">Rate this recipe:</p>
-                              <ngb-rating
-                                [(rate)]="item.rating"
-                                class="text-warning ms-4"
-                              ></ngb-rating>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-            }
-        }
+          </div>
+        </div>
+        } }
+      </div>
+    </div>
+  </details>
+  <details class="details-item" name="test">
+    <summary class="details-tab">lunch</summary>
+    <div class="details-content">
+      <div class="row cardContainer">
+        @for (item of data; track item.id) { @if (item.category==="Lunch") {
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
+          <div
+            class="card"
+            [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
+          >
+            <img
+              src="{{ item.image }}"
+              [routerLink]="['recipe-details/', item.id, fromWhere]"
+              class="card-img-top"
+              alt="Recipe Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
+                <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
+                <span
+                  class="badge bg-success"
+                  *ngIf="item.ingredients.length <= 4"
+                  >Healthy Recipe</span
+                >
+              </div>
+
+              <button
+                (click)="addToFavorites(item)"
+                class="btn btn-light favorite-btn"
+              >
+                <i
+                  class="fa fa-heart"
+                  [ngClass]="{ 'text-danger': isFavorite(item) }"
+                ></i>
+              </button>
+              <a
+                href="#"
+                class="btn"
+                [routerLink]="['recipe-details/', item.id, fromWhere]"
+                >Show details</a
+              >
+              <div class="star-rating mt-3 d-flex">
+                <p class="text-black-50">Rate this recipe:</p>
+                <ngb-rating
+                  [(rate)]="item.rating"
+                  class="text-warning ms-4"
+                ></ngb-rating>
+              </div>
             </div>
-		</div>
-	</details>
-	<details class="details-item" name="test">
-		<summary class="details-tab">Dinner</summary>
-		<div class="details-content">
-            <div class="row cardContainer">
-                @for (item of data; track item.id) {
-                    @if (item.category==="Dinner") {
-                      <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
-                        <div
-                          class="card"
-                          [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
-                        >
-                          <img
-                            src="{{ item.image }}"
-                            [routerLink]="['recipe-details/', item.id , fromWhere]"
-                            class="card-img-top"
-                            alt="Recipe Image"
-                          />
-                          <div class="card-body">
-                            <h5 class="card-title">{{ item.name }}</h5>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                              <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
-                              <span class="badge bg-success" *ngIf="item.ingredients.length <= 4"
-                                >Healthy Recipe</span
-                              >
-                            </div>
-                            <a href="#" class="btn" [routerLink]="['recipe-details/', item.id , fromWhere]"
-                              >Show details</a
-                            >
-                            <div class="star-rating mt-3 d-flex">
-                              <p class="text-black-50">Rate this recipe:</p>
-                              <ngb-rating
-                                [(rate)]="item.rating"
-                                class="text-warning ms-4"
-                              ></ngb-rating>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-            }
-        }
+          </div>
+        </div>
+        } }
+      </div>
+    </div>
+  </details>
+  <details class="details-item" name="test">
+    <summary class="details-tab">Dinner</summary>
+    <div class="details-content">
+      <div class="row cardContainer">
+        @for (item of data; track item.id) { @if (item.category==="Dinner") {
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
+          <div
+            class="card"
+            [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
+          >
+            <img
+              src="{{ item.image }}"
+              [routerLink]="['recipe-details/', item.id, fromWhere]"
+              class="card-img-top"
+              alt="Recipe Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
+                <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
+                <span
+                  class="badge bg-success"
+                  *ngIf="item.ingredients.length <= 4"
+                  >Healthy Recipe</span
+                >
+              </div>
+
+              <button
+                (click)="addToFavorites(item)"
+                class="btn btn-light favorite-btn"
+              >
+                <i
+                  class="fa fa-heart"
+                  [ngClass]="{ 'text-danger': isFavorite(item) }"
+                ></i>
+              </button>
+              <a
+                href="#"
+                class="btn"
+                [routerLink]="['recipe-details/', item.id, fromWhere]"
+                >Show details</a
+              >
+              <div class="star-rating mt-3 d-flex">
+                <p class="text-black-50">Rate this recipe:</p>
+                <ngb-rating
+                  [(rate)]="item.rating"
+                  class="text-warning ms-4"
+                ></ngb-rating>
+              </div>
             </div>
-		</div>
-	</details>
-	<details class="details-item" name="test">
-		<summary class="details-tab">Snacks</summary>
-		<div class="details-content">
-            <div class="row cardContainer">
-                @for (item of data; track item.id) {
-                    @if (item.category==="Snacks") {
-                      <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
-                        <div
-                          class="card"
-                          [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
-                        >
-                          <img
-                            src="{{ item.image }}"
-                            [routerLink]="['recipe-details/', item.id , fromWhere]"
-                            class="card-img-top"
-                            alt="Recipe Image"
-                          />
-                          <div class="card-body">
-                            <h5 class="card-title">{{ item.name }}</h5>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                              <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
-                              <span class="badge bg-success" *ngIf="item.ingredients.length <= 4"
-                                >Healthy Recipe</span
-                              >
-                            </div>
-                            <a href="#" class="btn" [routerLink]="['recipe-details/', item.id , fromWhere]"
-                              >Show details</a
-                            >
-                            <div class="star-rating mt-3 d-flex">
-                              <p class="text-black-50">Rate this recipe:</p>
-                              <ngb-rating
-                                [(rate)]="item.rating"
-                                class="text-warning ms-4"
-                              ></ngb-rating>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-            }
-        }
+          </div>
+        </div>
+        } }
+      </div>
+    </div>
+  </details>
+  <details class="details-item" name="test">
+    <summary class="details-tab">Snacks</summary>
+    <div class="details-content">
+      <div class="row cardContainer">
+        @for (item of data; track item.id) { @if (item.category==="Snacks") {
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
+          <div
+            class="card"
+            [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
+          >
+            <img
+              src="{{ item.image }}"
+              [routerLink]="['recipe-details/', item.id, fromWhere]"
+              class="card-img-top"
+              alt="Recipe Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
+                <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
+                <span
+                  class="badge bg-success"
+                  *ngIf="item.ingredients.length <= 4"
+                  >Healthy Recipe</span
+                >
+              </div>
+              <button
+                (click)="addToFavorites(item)"
+                class="btn btn-light favorite-btn"
+              >
+                <i
+                  class="fa fa-heart"
+                  [ngClass]="{ 'text-danger': isFavorite(item) }"
+                ></i>
+              </button>
+              <a
+                href="#"
+                class="btn"
+                [routerLink]="['recipe-details/', item.id, fromWhere]"
+                >Show details</a
+              >
+              <div class="star-rating mt-3 d-flex">
+                <p class="text-black-50">Rate this recipe:</p>
+                <ngb-rating
+                  [(rate)]="item.rating"
+                  class="text-warning ms-4"
+                ></ngb-rating>
+              </div>
             </div>
-		</div>
-	</details>
-	<details class="details-item" name="test">
-		<summary class="details-tab">Desserts</summary>
-		<div class="details-content">
-            <div class="row cardContainer">
-                @for (item of data; track item.id) {
-                    @if (item.category==="Desserts") {
-                      <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
-                        <div
-                          class="card"
-                          [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
-                        >
-                          <img
-                            src="{{ item.image }}"
-                            [routerLink]="['recipe-details/', item.id , fromWhere]"
-                            class="card-img-top"
-                            alt="Recipe Image"
-                          />
-                          <div class="card-body">
-                            <h5 class="card-title">{{ item.name }}</h5>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                              <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
-                              <span class="badge bg-success" *ngIf="item.ingredients.length <= 4"
-                                >Healthy Recipe</span
-                              >
-                            </div>
-                            <a href="#" class="btn" [routerLink]="['recipe-details/', item.id , fromWhere]"
-                              >Show details</a
-                            >
-                            <div class="star-rating mt-3 d-flex">
-                              <p class="text-black-50">Rate this recipe:</p>
-                              <ngb-rating
-                                [(rate)]="item.rating"
-                                class="text-warning ms-4"
-                              ></ngb-rating>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-            }
-        }
+          </div>
+        </div>
+        } }
+      </div>
+    </div>
+  </details>
+  <details class="details-item" name="test">
+    <summary class="details-tab">Desserts</summary>
+    <div class="details-content">
+      <div class="row cardContainer">
+        @for (item of data; track item.id) { @if (item.category==="Desserts") {
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" #card>
+          <div
+            class="card"
+            [ngClass]="{ 'bg-healthy': item.ingredients.length <= 4 }"
+          >
+            <img
+              src="{{ item.image }}"
+              [routerLink]="['recipe-details/', item.id, fromWhere]"
+              class="card-img-top"
+              alt="Recipe Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
+                <p class="card-text text-black-50 mb-0">{{ item.category }}</p>
+                <span
+                  class="badge bg-success"
+                  *ngIf="item.ingredients.length <= 4"
+                  >Healthy Recipe</span
+                >
+              </div>
+
+              <button
+                (click)="addToFavorites(item)"
+                class="btn btn-light favorite-btn"
+              >
+                <i
+                  class="fa fa-heart"
+                  [ngClass]="{ 'text-danger': isFavorite(item) }"
+                ></i>
+              </button>
+              <a
+                href="#"
+                class="btn"
+                [routerLink]="['recipe-details/', item.id, fromWhere]"
+                >Show details</a
+              >
+              <div class="star-rating mt-3 d-flex">
+                <p class="text-black-50">Rate this recipe:</p>
+                <ngb-rating
+                  [(rate)]="item.rating"
+                  class="text-warning ms-4"
+                ></ngb-rating>
+              </div>
             </div>
-		</div>
-	</details>
+          </div>
+        </div>
+        } }
+      </div>
+    </div>
+  </details>
 </div>
 <div class="loading w-75 m-auto" *ngIf="isloading">
   <ng-lottie [options]="loading"></ng-lottie>

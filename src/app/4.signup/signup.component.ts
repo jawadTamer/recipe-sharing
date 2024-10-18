@@ -75,7 +75,7 @@ export class SignupComponent {
       const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
       console.log("Stored user:", storedUser); 
 
-      if (storedUser.username === loginUsername && storedUser.password === loginPassword) {
+      if (storedUser.email === loginUsername && storedUser.password === loginPassword) {
         Swal.fire({
           title: 'Success!',
           text: 'Login successful! Welcome back.',
