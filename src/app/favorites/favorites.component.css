@@ -4,6 +4,7 @@
 
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -11,8 +12,6 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   filter: grayscale(50%);
 }
-
-
 
 h1 {
   background: linear-gradient(19deg, var(--primary) 0%,var(--dark) 100%);
@@ -37,26 +36,17 @@ h5 {
   color: var(--last);
 }
 
-button {
-  transition: all 0.3s ease-in-out;
-  background-color: var(--last);
-  color: whitesmoke;
-
-}
-
 button:hover {
   transform: scale(1.1);
   color: whitesmoke;
-  background-color: var(--secondary);
 }
+
 .card-img-top {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
-.card{
-cursor: pointer;
-}
+
 .bg-healthy {
 background-color: #e0f7e9;
 }
