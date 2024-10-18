@@ -30,6 +30,15 @@
                 >Healthy Recipe</span
               >
             </div>
+            <button
+            (click)="addToFavorites(item)"
+            class="btn btn-light favorite-btn"
+          >
+            <i
+              class="fa fa-heart"
+              [ngClass]="{ 'text-danger': isFavorite(item) }"
+            ></i>
+          </button>
             <div class="d-flex justify-content-between">
               <a href="#" class="btn" [routerLink]="['recipe-details/', item.id ,fromWhere]">Show details</a>
               <button class="btn" (click)="deleteshare(item.id)" style="background-color: red;" >Delete</button>
