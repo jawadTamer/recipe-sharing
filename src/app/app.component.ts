@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { LottieComponent } from 'ngx-lottie';
@@ -22,10 +22,24 @@ import { UserComponent } from './user/user.component';
 export class AppComponent {
   title = 'recipe-sharing';
   isDarkMode = false;
+  down = false;
 
   onModeChange(isDark: boolean) {
     this.isDarkMode = isDark;
   }
-  
+
+  Upwindow(){
+    window.scrollTo( 0 , 0);
+  }
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    if (window.scrollY > 500) {
+      this.down = true;
+    }
+    else{
+      this.down = false;
+    }
+    
+  }
   
 }
