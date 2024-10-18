@@ -47,6 +47,7 @@ export class RecipeDetailsComponent implements OnInit {
     } else if (this.fromWhere === 'sharing') {
       this.data = this.shareList;
       this.currentItem = this.shareList.find((item: { id: number | string }) => Number(item.id) === Number(this.itemId));
+      this.isloading = false;
     }
 
     

@@ -12,7 +12,7 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class FavoritesComponent implements OnInit {
   favorites: any[] = [];
-  fromWhere: string = '';
+  fromWhere: string = 'recipes';
 
   ngOnInit(): void {
     this.loadFavorites();
