@@ -27,13 +27,12 @@ export class AppComponent {
   onModeChange(isDark: boolean) {
     this.isDarkMode = isDark;
   }
-  
+
   Upwindow(){
     window.scrollTo( 0 , 0);
   }
   @HostListener('window:scroll')
   onWindowScroll() {
-    console.log(window.scrollY);
     if (window.scrollY > 500) {
       this.down = true;
     }
