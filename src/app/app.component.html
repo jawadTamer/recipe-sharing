@@ -2,6 +2,10 @@
 <app-navbar (modeChange)="onModeChange($event)"></app-navbar>
 <div [ngClass]="{ 'dark-mode': isDarkMode }">
   <router-outlet></router-outlet>
+  
+  <button id="UpBottum" class="up-button" [ngClass]="{'display' : down}" (click)="Upwindow()">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 </div>
   <app-footer/>
 
