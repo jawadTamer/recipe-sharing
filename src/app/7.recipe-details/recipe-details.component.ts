@@ -49,7 +49,7 @@ export class RecipeDetailsComponent implements OnInit {
       this.currentItem = this.shareList.find((item: { id: number | string }) => Number(item.id) === Number(this.itemId));
     }
 
-    this.isFavorite = this.favoritesService.isFavorite(this.recipe.id);
+    
   }
 
   getData(): Observable<any> {
@@ -57,21 +57,5 @@ export class RecipeDetailsComponent implements OnInit {
     return this.http.get<any>(apiUrl);
   }
 
-  @Input() recipe!: RecipeInterface;
-  isFavorite: boolean = false;
-
-  toggleFavorite() {
-    const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
-    if (!storedUser.username) {
-      this.router.navigate(['/signup']);
-      return;
-    }
-
-    if (this.isFavorite) {
-      this.favoritesService.removeFromFavorites(this.recipe.id);
-    } else {
-      this.favoritesService.addToFavorites(this.recipe);
-    }
-    this.isFavorite = !this.isFavorite;
-  }
+  
 }

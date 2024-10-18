@@ -14,6 +14,7 @@ import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CardsComponent {
   fromWhere:string = "recipes";
+  favorites: any[] = [];
   data: any = [
       {
         "id": 1,
@@ -137,5 +138,30 @@ export class CardsComponent {
     config.readonly = false;
   }
 
+  ngOnInit(): void {
+    
 
-}
+   
+          this.loadFavorites(); 
+        
+    
+  }
+  addToFavorites(recipe: any) {
+    const index = this.favorites.findIndex(fav => fav.id === recipe.id);
+    if (index === -1) {
+      this.favorites.push(recipe);
+    } else {
+      this.favorites.splice(index, 1); 
+    }
+    localStorage.setItem('favorites', JSON.stringify(this.favorites));
+  }
+
+  loadFavorites() {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    this.favorites = storedFavorites;
+  }
+
+  isFavorite(recipe: any): boolean {
+    return this.favorites.some(fav => fav.id === recipe.id)
+}}
+

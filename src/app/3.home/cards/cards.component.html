@@ -10,7 +10,7 @@
       >
         <img
           src="{{ item.image }}"
-          [routerLink]="['recipe-details/', item.id , fromWhere]"
+          [routerLink]="['recipe-details/', item.id, fromWhere]"
           class="card-img-top"
           alt="Recipe Image"
         />
@@ -22,7 +22,19 @@
               >Healthy Recipe</span
             >
           </div>
-          <a href="#" class="btn" [routerLink]="['recipe-details/', item.id , fromWhere]"
+          <button
+            (click)="addToFavorites(item)"
+            class="btn btn-light favorite-btn"
+          >
+            <i
+              class="fa fa-heart"
+              [ngClass]="{ 'text-danger': isFavorite(item) }"
+            ></i>
+          </button>
+          <a
+            href="#"
+            class="btn"
+            [routerLink]="['recipe-details/', item.id, fromWhere]"
             >Show details</a
           >
           <div class="star-rating mt-3 d-flex">
