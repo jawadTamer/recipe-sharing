@@ -7,6 +7,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { LottieComponent } from 'ngx-lottie';
 import { FavoritesService } from '../services/favorites.service';
 import { RecipeInterface } from '../recipe-interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-details',
@@ -15,6 +16,7 @@ import { RecipeInterface } from '../recipe-interface';
   templateUrl: './recipe-details.component.html',
   styleUrl: './recipe-details.component.css'
 })
+
 export class RecipeDetailsComponent implements OnInit {
  data:any;
   itemId:any;
@@ -26,7 +28,7 @@ export class RecipeDetailsComponent implements OnInit {
   };
  isloading:boolean=true;
 
-  constructor(private http: HttpClient,private active:ActivatedRoute, private favoritesService: FavoritesService) {}
+  constructor(private http: HttpClient,private active:ActivatedRoute, private favoritesService: FavoritesService, private router: Router) {}
 
   ngOnInit(): void {
 
@@ -36,7 +38,7 @@ export class RecipeDetailsComponent implements OnInit {
 
     console.log(this.itemId);
 
-  
+
   if (this.fromWhere == "recipes") {
 
     this.getData().subscribe(
@@ -56,17 +58,17 @@ export class RecipeDetailsComponent implements OnInit {
 
 
 
-    // this.isFavorite = this.favoritesService.isFavorite(this.recipe.id);
+    this.isFavorite = this.favoritesService.isFavorite(this.recipe.id);
   }
   else if(this.fromWhere == "sharing"){
     this.data = this.shareList;
     this.currentItem = this.shareList.find((item: { id: number | string}) => Number(item.id) === Number(this.itemId));
     // console.log(this.currentItem);
-    
+
   }
   this.isloading=false;
   }
-  
+
 
   getData(): Observable<any> {
     const apiUrl = 'https://jawadtamer.github.io/recipesApi/api.json';
@@ -77,6 +79,12 @@ export class RecipeDetailsComponent implements OnInit {
   isFavorite: boolean = false;
 
   toggleFavorite() {
+    const storedUser  = JSON.parse(localStorage.getItem('user') || '{}');
+    if (!storedUser .username) { // Check if user is logged in
+      this.router.navigate(['/signup']); // Redirect to signup page
+      return;
+    }
+
     if (this.isFavorite) {
       this.favoritesService.removeFromFavorites(this.recipe.id);
     } else {
