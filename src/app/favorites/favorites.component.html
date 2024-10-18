@@ -1,3 +1,28 @@
-<div *ngFor="let recipe of favoriteRecipes">
-  <app-recipe-details [recipe]="recipe"></app-recipe-details>
+<div class="container">
+  <h1 class="text-center mt-4">Your Favorite Recipes</h1>
+
+  <div *ngIf="favoriteRecipes.length === 0" class="text-center mt-4">
+    <p>You have no favorite recipes yet. Start adding some!</p>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let recipe of favoriteRecipes">
+      <div class="card">
+        <img src="{{ recipe.image }}" class="card-img-top" alt="{{ recipe.name }}" />
+        <div class="card-body">
+          <h5 class="card-title">{{ recipe.name }}</h5>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <p class="card-text text-black-50 mb-0">{{ recipe.category }}</p>
+            <span class="badge bg-success" *ngIf="recipe.ingredients.length <= 4">Healthy Recipe</span>
+          </div>
+          <div class="star-rating mt-3 d-flex">
+            <p class="text-black-50">Rate this recipe:</p>
+            <ngb-rating [(rate)]="recipe.rating" class="text-warning ms-4"></ngb-rating>
+          </div>
+          <a [routerLink]="['/recipe-details', recipe.id, 'favorites']" class="btn btn-primary m-2">Show details</a>
+          <button (click)="removeFromFavorites(recipe.id)" class="btn btn-danger m-2">Remove from Favorites</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
