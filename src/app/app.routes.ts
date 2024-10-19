@@ -145,6 +145,26 @@ export const routes: Routes = [
       import('./9.about/about.component').then((c) => c.AboutComponent),
   },
   {
+    path: 'users-list',
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./users-list/users-list.component').then((c) => c.UsersListComponent),
+        canActivate: [authGuard],
+      },
+      {
+        path: 'user',
+        loadComponent: () =>
+          import('./user/user.component').then(
+            (c) => c.UserComponent
+          ),
+        
+      },
+    ],
+   
+  },
+  {
     path: 'user', children: [
       {
         path: '',
@@ -199,6 +219,6 @@ export const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { LottieComponent } from 'ngx-lottie';
-import { RecipeInterface } from '../recipe-interface';
 import { Router } from '@angular/router';
 
 @Component({

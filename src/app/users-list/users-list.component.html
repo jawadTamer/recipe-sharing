@@ -1,0 +1,21 @@
+<section class="users-section">
+    <div class="container">
+      <div>
+        <h1 class="text-center mb-4">Our Users</h1>
+      </div>
+      <div class="row d-flex justify-content-center align-content-center ">
+        <div class="user-card col-12 col-sm-6 col-md-4 col-lg-3 m-4 bg-success-subtle " routerLink="user">
+          <img [src]="userimage" alt="userName" class="user-image" />
+          <h2 class="user-name">{{userName}}</h2>
+          <p class="user-email">{{useremail}}</p>
+        </div>
+        <div *ngFor="let user of users.results" class="user-card col-12 col-sm-6 col-md-4 col-lg-3 m-4">
+            <img [src]="user.picture.large" alt="{{ user.name.first }}" class="user-image" />
+            <h2 class="user-name">{{ user.name.first }} {{ user.name.last }}</h2>
+            <p class="user-email">{{ user.email }}</p>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+  

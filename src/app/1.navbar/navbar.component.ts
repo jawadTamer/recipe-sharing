@@ -7,7 +7,7 @@ import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [LottieComponent, NgbDropdownModule,RouterLink,RouterModule,NgClass],
+  imports: [LottieComponent, NgbDropdownModule,RouterLink,RouterModule,NgClass,],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
