@@ -7,7 +7,7 @@
         
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="text" placeholder="Username" name="loginUsername" ngModel #loginUsername="ngModel" pattern="^\S+$" required />
+          <input type="text" placeholder="Email" name="loginUsername" ngModel #loginUsername="ngModel" pattern="^\S+$" required />
         </div>
         <p *ngIf="loginUsername.touched && loginUsername.errors?.['required']" style="color: red;">
           Username is required
