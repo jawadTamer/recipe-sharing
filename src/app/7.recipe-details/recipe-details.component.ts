@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { LottieComponent } from 'ngx-lottie';
-import { FavoritesService } from '../services/favorites.service';
 import { RecipeInterface } from '../recipe-interface';
 import { Router } from '@angular/router';
 
@@ -27,7 +26,7 @@ export class RecipeDetailsComponent implements OnInit {
   };
   isloading: boolean = true;
 
-  constructor(private http: HttpClient, private active: ActivatedRoute, private favoritesService: FavoritesService, private router: Router) {}
+  constructor(private http: HttpClient, private active: ActivatedRoute,  private router: Router) {}
 
   ngOnInit(): void {
     this.itemId = this.active.snapshot.params['id'];
