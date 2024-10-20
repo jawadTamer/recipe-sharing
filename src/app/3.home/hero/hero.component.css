@@ -4,7 +4,7 @@
   }
   
   .content {
-    /* Remove the margin-left to avoid layout issues */
+    
     max-width: 100%;
     animation: fadeIn 1s ease-in-out;
   }
