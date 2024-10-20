@@ -11,61 +11,6 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { UserComponent } from './user/user.component';
 
 export const routes: Routes = [
-  // {
-  //   path: 'home',
-  //   loadComponent: () => import('./3.home/home.component').then(c => c.HomeComponent),
-  // },
-  // {
-  //   path: 'signup',
-  //   loadComponent: () => import('./4.signup/signup.component').then(c => c.SignupComponent),
-  // },
-  // {
-  //   path: 'recipes',
-  //   loadComponent: () => import('./6.recipes/recipes.component').then(c => c.RecipesComponent),
-  // },
-  // {
-  //   path: 'home/recipes',
-  //   loadComponent: () => import('./6.recipes/recipes.component').then(c => c.RecipesComponent),
-  // },
-  // {
-  //   path: 'recipes/recipe-details/:id',
-  //   loadComponent: () => import('./7.recipe-details/recipe-details.component').then(c => c.RecipeDetailsComponent),
-  //   canActivate: [authGuard],
-  // },
-  // {
-  //   path: 'recipe-details/:id',
-  //   loadComponent: () => import('./7.recipe-details/recipe-details.component').then(c => c.RecipeDetailsComponent),
-  //   canActivate: [authGuard],
-  // },
-  // {
-  //   path: 'home/recipe-details/:id',
-  //   loadComponent: () => import('./7.recipe-details/recipe-details.component').then(c => c.RecipeDetailsComponent),
-  //   canActivate: [authGuard],
-  // },
-  // {
-  //   path: 'home/recipes/recipe-details/:id',
-  //   loadComponent: () => import('./7.recipe-details/recipe-details.component').then(c => c.RecipeDetailsComponent),
-  //   canActivate: [authGuard],
-  // },
-  // {
-  //   path: 'sharing',
-  //   loadComponent: () => import('./8.sharing/sharing.component').then(c => c.SharingComponent),
-  //   canActivate: [authGuard],
-  // },
-  // {
-  //   path: 'about',
-  //   loadComponent: () => import('./9.about/about.component').then(c => c.AboutComponent),
-  // },
-  // {
-  //   path: 'user-details',
-  //   loadComponent: () => import('./10.user-details/user-details.component').then(c => c.UserDetailsComponent),
-  //   canActivate: [authGuard],
-  // },
-  // {
-  //   path: '',
-  //   redirectTo: 'home',
-  //   pathMatch: 'full',
-  // },
   {
     path: 'home',
     children: [
@@ -75,14 +20,19 @@ export const routes: Routes = [
           import('./3.home/home.component').then((c) => c.HomeComponent),
       },
       {
+        path: 'signup', 
+        loadComponent: () =>
+          import('./4.signup/signup.component').then((c) => c.SignupComponent),
+      },
+      {
         path: 'recipes',
         children: [
           {
-            path:'',
-        loadComponent: () =>
-          import('./6.recipes/recipes.component').then(
-            (c) => c.RecipesComponent
-          ),           
+            path: '',
+            loadComponent: () =>
+              import('./6.recipes/recipes.component').then(
+                (c) => c.RecipesComponent
+              ),
           },
           {
             path: 'recipe-details/:id/:fromWhere',
@@ -93,10 +43,6 @@ export const routes: Routes = [
             canActivate: [authGuard],
           },
         ],
-        // loadComponent: () =>
-        //   import('./6.recipes/recipes.component').then(
-        //     (c) => c.RecipesComponent
-        //   ),
       },
       {
         path: 'recipe-details/:id/:fromWhere',
@@ -109,7 +55,7 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'signup',
+    path: 'signup', 
     loadComponent: () =>
       import('./4.signup/signup.component').then((c) => c.SignupComponent),
   },
@@ -150,7 +96,9 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () =>
-          import('./users-list/users-list.component').then((c) => c.UsersListComponent),
+          import('./users-list/users-list.component').then(
+            (c) => c.UsersListComponent
+          ),
         canActivate: [authGuard],
       },
       {
@@ -159,44 +107,24 @@ export const routes: Routes = [
           import('./user/user.component').then(
             (c) => c.UserComponent
           ),
-        
       },
     ],
-   
   },
   {
-    path: 'user', children: [
-      {
-        path: '',
-        loadComponent: () =>
-          import('./user/user.component').then(
-            (c) => c.UserComponent
-          ),
-        canActivate: [authGuard],
-      },
-      {
-        path: 'sharing',
-    loadComponent: () =>
-      import('./8.sharing/sharing.component').then((c) => c.SharingComponent),
-    canActivate: [authGuard],
-      },
-      {
-        path: 'recipe-details/:id/:fromWhere',
-        loadComponent: () =>
-          import('./7.recipe-details/recipe-details.component').then(
-            (c) => c.RecipeDetailsComponent
-          ),
-        canActivate: [authGuard],
-      },
-    ],
-   
-  },
-  { path: 'favorites',
+    path: 'user',
     children: [
       {
         path: '',
         loadComponent: () =>
-          import('./favorites/favorites.component').then((c) => c.FavoritesComponent),
+          import('./user/user.component').then((c) => c.UserComponent),
+        canActivate: [authGuard],
+      },
+      {
+        path: 'sharing',
+        loadComponent: () =>
+          import('./8.sharing/sharing.component').then(
+            (c) => c.SharingComponent
+          ),
         canActivate: [authGuard],
       },
       {
@@ -208,7 +136,27 @@ export const routes: Routes = [
         canActivate: [authGuard],
       },
     ],
-    
+  },
+  {
+    path: 'favorites',
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./favorites/favorites.component').then(
+            (c) => c.FavoritesComponent
+          ),
+        canActivate: [authGuard],
+      },
+      {
+        path: 'recipe-details/:id/:fromWhere',
+        loadComponent: () =>
+          import('./7.recipe-details/recipe-details.component').then(
+            (c) => c.RecipeDetailsComponent
+          ),
+        canActivate: [authGuard],
+      },
+    ],
   },
   {
     path: '',
@@ -216,6 +164,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
